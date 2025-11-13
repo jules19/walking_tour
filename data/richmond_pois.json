@@ -8,7 +8,9 @@
     "data_source": "manually_curated",
     "collected_at": "2025-11-13T11:59:14.628189",
     "total_pois": 15,
-    "note": "Sample data created for learning project"
+    "note": "Sample data created for learning project",
+    "enriched_pois": 10,
+    "enrichment_note": "Top 10 POIs enriched with facts, visual cues, and vibe tags"
   },
   "pois": [
     {
@@ -30,10 +32,26 @@
         "wikipedia": "en:Richmond_Castle",
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Massive stone keep rising 100 feet above the town",
+        "Thick castle walls made of local limestone",
+        "Arched Norman gateway entrance",
+        "Towers visible from the market square"
+      ],
+      "facts": [
+        "Richmond Castle was built starting in 1071 by Alan Rufus, a Breton nobleman who fought at the Battle of Hastings. It's one of the oldest Norman stone fortresses in Britain.",
+        "The castle's 100-foot-tall keep, called Scotland's Hall, is one of the finest examples of 11th-century architecture in England and offers panoramic views of the Yorkshire Dales.",
+        "During World War I, the castle was used as a prison for conscientious objectors. 16 men who refused military service were held here before being sent to France and sentenced to death (later commuted)."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "castle"
+      "poi_type": "castle",
+      "vibe_tags": [
+        "history",
+        "architecture",
+        "military",
+        "medieval",
+        "dramatic"
+      ]
     },
     {
       "id": "richmond_002",
@@ -53,10 +71,27 @@
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Solitary square stone tower standing alone",
+        "Gothic-style arched windows",
+        "Weathered grey stone",
+        "Small arched doorway at ground level"
+      ],
+      "facts": [
+        "Greyfriars Tower is all that remains of a Franciscan friary founded in 1258. The friars lived here for nearly 300 years until Henry VIII's Dissolution of the Monasteries in 1539.",
+        "The tower you see today was built around 1500 as the friary's bell tower. After the Dissolution, it was converted into a private dwelling and later used as a courthouse.",
+        "Local legend claims the tower is haunted by the ghost of a grey friar who walks the grounds at night, still ringing the bells that no longer exist."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "ruins"
+      "poi_type": "ruins",
+      "vibe_tags": [
+        "history",
+        "ruins",
+        "religious",
+        "haunted",
+        "mysterious",
+        "medieval"
+      ]
     },
     {
       "id": "richmond_003",
@@ -76,10 +111,27 @@
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Large cobblestone square",
+        "Tall stone obelisk in the center",
+        "Colorful Georgian buildings surrounding the square",
+        "Market stalls on weekends",
+        "Castle visible on the hill to the east"
+      ],
+      "facts": [
+        "Richmond's Market Place has been the commercial heart of the town since 1071, when the castle was built. Markets have been held here continuously for over 950 years.",
+        "The cobbled square is one of the largest market places in England, covering nearly 4 acres. It was deliberately built large to accommodate the massive livestock markets that made Richmond wealthy.",
+        "The Market Cross obelisk in the center dates from 1771. It replaced an earlier medieval cross where public proclamations were read and punishments carried out."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "marketplace"
+      "poi_type": "marketplace",
+      "vibe_tags": [
+        "history",
+        "social",
+        "commerce",
+        "architecture",
+        "community"
+      ]
     },
     {
       "id": "richmond_004",
@@ -100,10 +152,28 @@
         "wikipedia": null,
         "website": "https://www.georgiantheatreroyal.co.uk"
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Narrow Georgian townhouse facade",
+        "Small arched entrance doorway",
+        "Cream-colored stone building",
+        "Period window frames",
+        "Tucked into Victoria Road near the market"
+      ],
+      "facts": [
+        "Built in 1788 by actor-manager Samuel Butler, this is Britain's most complete Georgian playhouse. It closed in 1848 and was forgotten until its rediscovery in 1960.",
+        "When restoration began in 1963, they found the original painted scenery, 200-year-old playbills, and even the actor's dressing rooms intact—like a theatrical time capsule.",
+        "The theatre has a capacity of just 214 people and still uses candle-lit performances to recreate the authentic Georgian atmosphere. The stage is only 15 feet wide."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "theatre"
+      "poi_type": "theatre",
+      "vibe_tags": [
+        "architecture",
+        "culture",
+        "history",
+        "arts",
+        "georgian",
+        "intimate"
+      ]
     },
     {
       "id": "richmond_005",
@@ -123,10 +193,26 @@
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Red brick building on Ryder's Wynd",
+        "Small entrance with museum sign",
+        "Traditional shop-front windows",
+        "Near the marketplace"
+      ],
+      "facts": [
+        "The museum is housed in an old joiner's shop and tells the story of Richmond and the surrounding dales. It includes a recreated Victorian street and a collection of agricultural tools.",
+        "One of the museum's most unusual exhibits is James Herriot's original veterinary surgery set from the TV series 'All Creatures Great and Small,' which was filmed in the area.",
+        "The museum also houses military artifacts from the Yorkshire Regiment and exhibits on the town's lead mining heritage, which brought wealth to Richmond in the 18th and 19th centuries."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "museum"
+      "poi_type": "museum",
+      "vibe_tags": [
+        "history",
+        "local",
+        "culture",
+        "educational",
+        "victorian"
+      ]
     },
     {
       "id": "richmond_006",
@@ -146,10 +232,27 @@
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Square stone bell tower",
+        "Gothic arched entrance",
+        "Large stained glass windows",
+        "Stone walls with ivy",
+        "Graveyard with old headstones"
+      ],
+      "facts": [
+        "St Mary's Parish Church dates back to at least 1135, making it one of Richmond's oldest buildings. The tower and much of the structure are from the 12th century.",
+        "During the 1850s, the church underwent major Victorian restoration. However, parts of the original Norman church remain, including several medieval grave slabs set into the floor.",
+        "The church graveyard contains graves of soldiers from the nearby Catterick Garrison, including Commonwealth War Graves from both World Wars."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "church"
+      "poi_type": "church",
+      "vibe_tags": [
+        "history",
+        "religious",
+        "architecture",
+        "peaceful",
+        "medieval"
+      ]
     },
     {
       "id": "richmond_007",
@@ -169,10 +272,27 @@
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Former church building with tower",
+        "Military flags and banners outside",
+        "Stone Gothic architecture",
+        "Green Howards Museum sign",
+        "Trinity Church Square location"
+      ],
+      "facts": [
+        "The Green Howards Regiment was formed in 1688 and served in virtually every major British conflict for 316 years, including Waterloo, the Somme, and D-Day, before being merged in 2006.",
+        "The museum displays over 300 years of military history including 18 Victoria Crosses—Britain's highest award for valor. One was won by a 14-year-old drummer boy.",
+        "The regiment's nickname 'Green Howards' came from their green facings and their colonel, Charles Howard, to distinguish them from another regiment also led by a Howard."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "museum"
+      "poi_type": "museum",
+      "vibe_tags": [
+        "history",
+        "military",
+        "educational",
+        "valor",
+        "patriotic"
+      ]
     },
     {
       "id": "richmond_008",
@@ -191,10 +311,27 @@
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Single stone arch bridge",
+        "Pale stone construction",
+        "River Swale flowing beneath",
+        "View of the castle from the bridge",
+        "Steep banks on either side"
+      ],
+      "facts": [
+        "Richmond Bridge was built in 1789 to replace an older medieval bridge. It has a single elegant arch spanning 112 feet across the River Swale.",
+        "The bridge was designed by a local mason and was built for £2,500—quite expensive for its time. A toll was charged to cross until 1846 to recoup the construction costs.",
+        "The Swale below is one of England's fastest-flowing rivers. In flood conditions, the water can rise 15 feet and surge under the bridge with tremendous force."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "bridge"
+      "poi_type": "bridge",
+      "vibe_tags": [
+        "architecture",
+        "scenic",
+        "engineering",
+        "nature",
+        "picturesque"
+      ]
     },
     {
       "id": "richmond_009",
@@ -214,10 +351,27 @@
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Cascading water over rock ledges",
+        "River flowing fast with white water",
+        "Wooded banks",
+        "Castle walls rising above on the cliff",
+        "Stone steps leading down to the water"
+      ],
+      "facts": [
+        "Richmond Falls is a series of small waterfalls and rapids on the River Swale, just below the castle. The Swale is one of the fastest rivers in England.",
+        "The falls are particularly dramatic after heavy rain, when the water level can rise several feet in hours. Victorian tourists would come specifically to see the falls in flood.",
+        "The riverbank path offers views of the castle perched on the cliff above—this is the classic Richmond postcard view that's been photographed for over 150 years."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "natural"
+      "poi_type": "natural",
+      "vibe_tags": [
+        "nature",
+        "scenic",
+        "peaceful",
+        "romantic",
+        "picturesque"
+      ]
     },
     {
       "id": "richmond_010",
@@ -236,10 +390,28 @@
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Tall octagonal stone tower",
+        "Gothic-style pointed arch windows",
+        "Crenellated top like a castle",
+        "Standing alone on a hillside",
+        "Visible from town on clear days"
+      ],
+      "facts": [
+        "Culloden Tower was built in 1746 by John Yorke as a folly to commemorate the Duke of Cumberland's victory at the Battle of Culloden, which ended the Jacobite Rising.",
+        "The tower stands 80 feet tall and was designed as a banqueting house where Yorke could entertain guests while enjoying views over his estate and the River Swale.",
+        "It's an early example of Gothic Revival architecture. The building was abandoned for many years but has recently been restored and is occasionally open to the public."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "building"
+      "poi_type": "building",
+      "vibe_tags": [
+        "architecture",
+        "history",
+        "folly",
+        "scenic",
+        "political",
+        "eccentric"
+      ]
     },
     {
       "id": "richmond_011",
