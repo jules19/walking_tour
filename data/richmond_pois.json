@@ -1,0 +1,364 @@
+{
+  "metadata": {
+    "location": "Richmond, North Yorkshire",
+    "center": {
+      "lat": 54.4028,
+      "lng": -1.735
+    },
+    "data_source": "manually_curated",
+    "collected_at": "2025-11-13T11:59:14.628189",
+    "total_pois": 15,
+    "note": "Sample data created for learning project"
+  },
+  "pois": [
+    {
+      "id": "richmond_001",
+      "osm_type": "node",
+      "osm_id": "sample_1",
+      "name": "Richmond Castle",
+      "geo": {
+        "lat": 54.4039,
+        "lng": -1.7394
+      },
+      "tags": {
+        "historic": "castle",
+        "tourism": "attraction",
+        "heritage": "1"
+      },
+      "metadata": {
+        "description": "Norman castle built in 1071, one of the oldest stone castles in England",
+        "wikipedia": "en:Richmond_Castle",
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "castle"
+    },
+    {
+      "id": "richmond_002",
+      "osm_type": "node",
+      "osm_id": "sample_2",
+      "name": "Greyfriars Tower",
+      "geo": {
+        "lat": 54.4028,
+        "lng": -1.735
+      },
+      "tags": {
+        "historic": "monastery",
+        "ruins": "yes"
+      },
+      "metadata": {
+        "description": "15th-century bell tower, sole remnant of Franciscan friary",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "ruins"
+    },
+    {
+      "id": "richmond_003",
+      "osm_type": "node",
+      "osm_id": "sample_3",
+      "name": "Richmond Market Place",
+      "geo": {
+        "lat": 54.4025,
+        "lng": -1.7367
+      },
+      "tags": {
+        "tourism": "attraction",
+        "historic": "marketplace"
+      },
+      "metadata": {
+        "description": "Historic cobbled market square, one of the largest in England",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "marketplace"
+    },
+    {
+      "id": "richmond_004",
+      "osm_type": "node",
+      "osm_id": "sample_4",
+      "name": "The Georgian Theatre Royal",
+      "geo": {
+        "lat": 54.4029,
+        "lng": -1.7355
+      },
+      "tags": {
+        "amenity": "theatre",
+        "historic": "building",
+        "heritage": "2"
+      },
+      "metadata": {
+        "description": "Built in 1788, Britain's most complete Georgian playhouse",
+        "wikipedia": null,
+        "website": "https://www.georgiantheatreroyal.co.uk"
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "theatre"
+    },
+    {
+      "id": "richmond_005",
+      "osm_type": "node",
+      "osm_id": "sample_5",
+      "name": "Richmondshire Museum",
+      "geo": {
+        "lat": 54.4032,
+        "lng": -1.736
+      },
+      "tags": {
+        "tourism": "museum",
+        "amenity": "museum"
+      },
+      "metadata": {
+        "description": "Local history museum in former church building",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "museum"
+    },
+    {
+      "id": "richmond_006",
+      "osm_type": "node",
+      "osm_id": "sample_6",
+      "name": "St Mary's Church",
+      "geo": {
+        "lat": 54.402,
+        "lng": -1.7375
+      },
+      "tags": {
+        "historic": "church",
+        "amenity": "place_of_worship"
+      },
+      "metadata": {
+        "description": "Medieval parish church with Victorian restoration",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "church"
+    },
+    {
+      "id": "richmond_007",
+      "osm_type": "node",
+      "osm_id": "sample_7",
+      "name": "The Green Howards Regimental Museum",
+      "geo": {
+        "lat": 54.403,
+        "lng": -1.7365
+      },
+      "tags": {
+        "tourism": "museum",
+        "amenity": "museum"
+      },
+      "metadata": {
+        "description": "Military museum covering 300 years of Yorkshire regiment history",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "museum"
+    },
+    {
+      "id": "richmond_008",
+      "osm_type": "node",
+      "osm_id": "sample_8",
+      "name": "Richmond Bridge",
+      "geo": {
+        "lat": 54.4042,
+        "lng": -1.7402
+      },
+      "tags": {
+        "historic": "bridge"
+      },
+      "metadata": {
+        "description": "Medieval stone bridge over River Swale, dating from 1789",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "bridge"
+    },
+    {
+      "id": "richmond_009",
+      "osm_type": "node",
+      "osm_id": "sample_9",
+      "name": "Richmond Falls",
+      "geo": {
+        "lat": 54.4045,
+        "lng": -1.741
+      },
+      "tags": {
+        "tourism": "viewpoint",
+        "natural": "waterfall"
+      },
+      "metadata": {
+        "description": "Series of waterfalls on the River Swale beneath the castle",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "natural"
+    },
+    {
+      "id": "richmond_010",
+      "osm_type": "node",
+      "osm_id": "sample_10",
+      "name": "The Old Brewery",
+      "geo": {
+        "lat": 54.4027,
+        "lng": -1.7358
+      },
+      "tags": {
+        "historic": "building"
+      },
+      "metadata": {
+        "description": "19th-century brewery building, now converted",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "building"
+    },
+    {
+      "id": "richmond_011",
+      "osm_type": "node",
+      "osm_id": "sample_11",
+      "name": "Millgate House Gardens",
+      "geo": {
+        "lat": 54.4035,
+        "lng": -1.7388
+      },
+      "tags": {
+        "tourism": "attraction",
+        "leisure": "garden"
+      },
+      "metadata": {
+        "description": "Award-winning terraced garden near castle",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "garden"
+    },
+    {
+      "id": "richmond_012",
+      "osm_type": "node",
+      "osm_id": "sample_12",
+      "name": "Trinity Church Square",
+      "geo": {
+        "lat": 54.4022,
+        "lng": -1.7358
+      },
+      "tags": {
+        "historic": "church"
+      },
+      "metadata": {
+        "description": "Former Holy Trinity Church, now community venue",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "church"
+    },
+    {
+      "id": "richmond_013",
+      "osm_type": "node",
+      "osm_id": "sample_13",
+      "name": "Culloden Tower",
+      "geo": {
+        "lat": 54.401,
+        "lng": -1.742
+      },
+      "tags": {
+        "historic": "tower",
+        "tourism": "viewpoint"
+      },
+      "metadata": {
+        "description": "18th-century folly built to commemorate Battle of Culloden",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "tower"
+    },
+    {
+      "id": "richmond_014",
+      "osm_type": "node",
+      "osm_id": "sample_14",
+      "name": "The Bar",
+      "geo": {
+        "lat": 54.4035,
+        "lng": -1.7372
+      },
+      "tags": {
+        "historic": "gate"
+      },
+      "metadata": {
+        "description": "Medieval archway and former toll gate",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "gate"
+    },
+    {
+      "id": "richmond_015",
+      "osm_type": "node",
+      "osm_id": "sample_15",
+      "name": "Richmond Station",
+      "geo": {
+        "lat": 54.3995,
+        "lng": -1.734
+      },
+      "tags": {
+        "historic": "railway_station",
+        "tourism": "museum"
+      },
+      "metadata": {
+        "description": "Former railway station, now cinema and heritage center",
+        "wikipedia": null,
+        "website": null
+      },
+      "visual_cues": [],
+      "facts": [],
+      "source_reliability": 0.9,
+      "poi_type": "station"
+    }
+  ],
+  "categories": {
+    "historic": 11,
+    "tourism": 4,
+    "amenity": 0,
+    "other": 0
+  }
+}
