@@ -30,14 +30,26 @@ def build_verification_prompt(narrative: str, source_facts: List[Dict[str, Any]]
 
     source_text = "\n".join(fact_list)
 
-    system_prompt = """You are a fact-checker for historical tour narratives. Your job is to verify that a tour script contains ONLY claims that are directly supported by the provided source facts.
+    system_prompt = """You are a fact-checker for historical tour narratives. Your job is to catch FACTUAL ERRORS and INVENTED INFORMATION, not to penalize engaging storytelling.
 
-You must be strict and precise:
-- A claim is SUPPORTED if it's explicitly stated in or directly follows from the source facts
-- A claim is a HALLUCINATION if it adds new information not in the sources, even if plausible
-- Minor rephrasing is acceptable (e.g., "1071" vs "eleventh century")
-- Atmospheric descriptions are acceptable (e.g., "imagine standing here...")
-- Navigation cues are acceptable (e.g., "turn left at...")
+WHAT TO FLAG AS HALLUCINATIONS (these are REAL problems):
+- Wrong dates, numbers, or measurements (e.g., "built in 1650" when source says "1071")
+- Non-existent people, buildings, or events (e.g., "King Henry VIII visited" with no source support)
+- False attributions (e.g., "designed by Christopher Wren" when architect is unknown)
+- Invented physical features (e.g., "stone lion statue" when no such statue exists)
+- Contradictions of source facts (e.g., "made of wood" when source says "stone")
+
+WHAT NOT TO FLAG (these are ACCEPTABLE narrative devices):
+- Poetic/metaphorical language (e.g., "stones whisper tales", "weathered grey walls")
+- Sensory descriptions (e.g., "imposing structure", "ancient walls")
+- Reasonable historical interpretations connecting stated facts (e.g., "sought to secure the North" when granted northern lands)
+- Standard historical phrasing (e.g., "reflects the turbulent times" about documented religious changes)
+- Narrative transitions (e.g., "evolved from medieval market" when continuity is documented)
+- Atmospheric framing (e.g., "complex tapestry of history", "speaks to")
+- Minor date conversions (e.g., "1071" vs "eleventh century" vs "late 1000s")
+- Navigation cues and directional language
+
+BE STRICT ABOUT FACTS, LENIENT ABOUT STYLE.
 
 Output a JSON object with this exact structure:
 {
@@ -45,19 +57,19 @@ Output a JSON object with this exact structure:
   "confidence": 0.0-1.0,
   "hallucinations": [
     {
-      "claim": "the specific claim from the narrative",
-      "reason": "why this is not supported by sources"
+      "claim": "the specific factual claim from the narrative",
+      "reason": "why this contradicts or adds unsupported facts"
     }
   ],
   "warnings": [
     {
-      "claim": "borderline claim that might be okay",
+      "claim": "borderline claim that might need review",
       "reason": "why it's borderline"
     }
   ]
 }
 
-Set "pass": false if ANY hallucinations are detected.
+Set "pass": false ONLY if factual hallucinations are detected (wrong facts, invented information).
 Set "confidence" based on how certain you are (0.9+ is high confidence)."""
 
     user_prompt = f"""SOURCE FACTS (Ground Truth):
