@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+output/tours/*
+output/audio/*
+!output/tours/.gitkeep
+!output/audio/.gitkeep
+
+# Data (keep structure files but not generated content)
+*.mp3
+*.wav
