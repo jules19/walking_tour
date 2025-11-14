@@ -2,9 +2,11 @@
 
 ## What We've Built
 
-Phase 1 creates AI-generated tour narratives using GPT-4o with different personas.
+Phase 1 creates AI-generated tour narratives using GPT-4o with different personas, and verifies them for factual accuracy.
 
 ### Files Created
+
+**Step 1.1: Narrative Generation**
 
 1. **`src/generate_tour.py`** - Main narrative generation script
    - Connects 3 POIs into a coherent tour story
@@ -18,6 +20,20 @@ Phase 1 creates AI-generated tour narratives using GPT-4o with different persona
    - Validates POI data is enriched
 
 3. **`.gitignore`** - Prevents committing sensitive files
+
+**Step 1.2: Fact-Checking (NEW)**
+
+4. **`src/fact_checker.py`** - Fact verification module
+   - Uses GPT-4o-mini to verify narratives against source facts
+   - Detects hallucinations (claims not supported by sources)
+   - Returns confidence scores and specific issues found
+   - Tests with both good and bad narratives
+
+5. **`src/generate_tour_with_verification.py`** - Integrated pipeline
+   - Generates narrative with GPT-4o
+   - Verifies facts with GPT-4o-mini
+   - Marks tours as: approved / review needed / rejected
+   - Tracks total costs and token usage
 
 ### Persona Types
 
@@ -65,7 +81,7 @@ You should see:
 
 ## Running the Generator
 
-### Generate Test Tours
+### Step 1.1: Generate Basic Tours
 
 Run the default test (Castle → Greyfriars → Market Place with 3 personas):
 
@@ -79,6 +95,33 @@ This will:
 3. Create both JSON (full data) and TXT (readable narrative) files
 4. Display token usage and preview
 
+### Step 1.2: Generate with Fact-Checking (Recommended)
+
+Run the integrated pipeline with verification:
+
+```bash
+python src/generate_tour_with_verification.py
+```
+
+This will:
+1. Generate narrative with GPT-4o
+2. Verify facts with GPT-4o-mini
+3. Mark tour as approved/review/rejected based on verification
+4. Save results with verification metadata
+5. Display any hallucinations detected
+
+### Test Fact-Checker Only
+
+Test the fact-checking module independently:
+
+```bash
+python src/fact_checker.py
+```
+
+This runs two tests:
+- **Test 1**: Good narrative (only uses provided facts) → should PASS
+- **Test 2**: Bad narrative (contains hallucinations) → should FAIL
+
 ### Output Files
 
 Generated files in `output/tours/`:
@@ -88,6 +131,7 @@ Generated files in `output/tours/`:
 
 ### Example Output Structure
 
+**Basic output (Step 1.1):**
 ```json
 {
   "persona": "historian",
@@ -100,7 +144,81 @@ Generated files in `output/tours/`:
 }
 ```
 
-## Evaluation Criteria (Step 1.1)
+**Verified output (Step 1.2):**
+```json
+{
+  "persona": "historian",
+  "pois": [...],
+  "narrative": "Welcome to Richmond Castle...",
+  "verification": {
+    "pass": true,
+    "confidence": 0.95,
+    "hallucinations": [],
+    "warnings": []
+  },
+  "status": "approved",
+  "passed_verification": true,
+  "generated_at": "2025-11-13T12:00:00"
+}
+```
+
+## Fact-Checking System (Step 1.2)
+
+### How It Works
+
+The fact-checking rail uses a **double-loop verification** process:
+
+1. **Generation (GPT-4o)**: Creates the narrative from POI facts
+2. **Verification (GPT-4o-mini)**: Checks narrative against source facts
+
+The verifier is instructed to be strict:
+- Claims must be explicitly stated or directly follow from source facts
+- Minor rephrasing is acceptable (e.g., "1071" vs "eleventh century")
+- Atmospheric descriptions are allowed (e.g., "imagine standing here...")
+- Navigation cues are allowed (e.g., "turn left at...")
+
+### Verification Results
+
+Tours are classified as:
+
+- **✓ Approved**: Pass = true, Confidence ≥ 0.9
+  - No hallucinations detected
+  - High confidence in verification
+  - Safe to use
+
+- **⚠ Review Needed**: Pass = true, Confidence < 0.9
+  - Technically passed but borderline
+  - Manual review recommended
+  - May have warnings
+
+- **✗ Rejected**: Pass = false
+  - Hallucinations detected
+  - Should not be used
+  - Lists specific problematic claims
+
+### Example Hallucinations
+
+The fact-checker catches claims like:
+
+**Bad**: "King Henry VIII visited this castle three times"
+- **Reason**: Not mentioned in source facts
+
+**Bad**: "The castle was originally built with wood"
+- **Reason**: Source says it started in 1071 as stone (one of oldest stone castles)
+
+**OK**: "In the eleventh century, Alan Rufus began construction"
+- **Reason**: Rephrasing of "built starting in 1071"
+
+### Confidence Threshold
+
+Default threshold: **0.9** (90% confidence)
+
+- Higher threshold (0.95) = More strict, fewer false positives
+- Lower threshold (0.85) = More lenient, may allow borderline claims
+
+Adjust based on your risk tolerance for factual errors.
+
+## Evaluation Criteria
 
 When you review the generated narratives, check:
 
@@ -120,11 +238,23 @@ When you review the generated narratives, check:
 
 ## Cost Estimates
 
+### Step 1.1: Generation Only
+
 - **Per narrative**: ~1,500-2,000 tokens total
   - Prompt: ~1,000 tokens
   - Completion: ~500-1,000 tokens
 - **Cost**: ~$0.01-0.02 per narrative (GPT-4o pricing)
 - **Test run (3 personas)**: ~$0.03-0.06
+
+### Step 1.2: Generation + Verification
+
+- **Generation (GPT-4o)**: ~1,500-2,000 tokens
+- **Verification (GPT-4o-mini)**: ~1,200-1,500 tokens
+- **Total**: ~2,700-3,500 tokens per verified tour
+- **Cost**: ~$0.015-0.025 per verified tour
+- **Test run (1 persona)**: ~$0.02
+
+The fact-checking adds minimal cost (~50% increase) but provides significant quality assurance.
 
 ## Next Steps
 
