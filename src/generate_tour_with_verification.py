@@ -18,6 +18,7 @@ from generate_tour import (
     build_tour_prompt
 )
 from fact_checker import verify_narrative
+from text_to_speech import generate_audio
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -27,7 +28,8 @@ def generate_and_verify(
     pois: List[Dict],
     persona_key: str,
     temperature: float = 0.7,
-    confidence_threshold: float = 0.9
+    confidence_threshold: float = 0.9,
+    generate_audio_file: bool = True
 ) -> Dict[str, Any]:
     """
     Generate a tour narrative and verify it for hallucinations
@@ -37,9 +39,10 @@ def generate_and_verify(
         persona_key: Persona to use (historian, ghost_hunter, etc.)
         temperature: Generation temperature (0.0-1.0)
         confidence_threshold: Minimum confidence for passing (default 0.9)
+        generate_audio_file: Whether to generate audio output (default True)
 
     Returns:
-        Dict with narrative, verification results, and metadata
+        Dict with narrative, verification results, audio, and metadata
     """
     print(f"\n{'='*60}")
     print(f"GENERATING VERIFIED TOUR")
@@ -83,7 +86,25 @@ def generate_and_verify(
 
     verification = verify_narrative(narrative, pois)
 
-    # Step 3: Compile results
+    # Step 3: Generate audio (optional)
+    audio_result = None
+    if generate_audio_file:
+        print(f"\n{'='*60}")
+        print("STEP 3: GENERATE AUDIO")
+        print(f"{'='*60}")
+
+        # Create filename based on persona and timestamp
+        audio_filename = f"tour_{persona_key}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
+        audio_result = generate_audio(
+            narrative=narrative,
+            persona_key=persona_key,
+            output_filename=audio_filename,
+            model="tts-1",
+            speed=0.95  # Slightly slower for clarity
+        )
+
+    # Step 4: Compile results
     result = {
         "persona": persona_key,
         "pois": [{"id": poi["id"], "name": poi["name"]} for poi in pois],
@@ -94,13 +115,14 @@ def generate_and_verify(
             "temperature": temperature,
             "tokens": generation_tokens
         },
+        "audio": audio_result,
         "passed_verification": verification.get("pass", False),
         "confidence": verification.get("confidence", 0.0),
         "confidence_threshold": confidence_threshold,
         "generated_at": datetime.now().isoformat()
     }
 
-    # Step 4: Evaluate result
+    # Step 5: Evaluate result
     print(f"\n{'='*60}")
     print("FINAL EVALUATION")
     print(f"{'='*60}")
@@ -127,6 +149,10 @@ def generate_and_verify(
     estimated_cost = (total_tokens / 1000) * 0.005  # Rough estimate
     print(f"\n  Total tokens: {total_tokens}")
     print(f"  Estimated cost: ${estimated_cost:.4f}")
+
+    if audio_result and audio_result.get("success"):
+        print(f"  Audio file: {audio_result['file_path']}")
+        print(f"  Audio duration: ~{audio_result['estimated_duration_mins']:.1f} minutes")
 
     return result
 
@@ -203,14 +229,14 @@ def main():
         save_verified_tour(result)
 
         print("\n" + "="*60)
-        print("STEP 1.2 COMPLETE")
+        print("STEP 1.3 COMPLETE")
         print("="*60)
-        print("\nWhat we verified:")
-        print("  ✓ Narratives can be generated with GPT-4o")
-        print("  ✓ Fact-checking rail catches hallucinations")
-        print("  ✓ Verification results include confidence scores")
+        print("\nWhat we built:")
+        print("  ✓ Narratives generated with GPT-4o")
+        print("  ✓ Fact-checking rail validates content")
+        print("  ✓ Audio generated with OpenAI TTS")
         print("  ✓ Tours marked as approved/review/rejected")
-        print("\nNext: Step 1.3 - Add text-to-speech generation")
+        print("\nPhase 1 Complete! Next: Phase 2 - Route Intelligence")
 
 
 if __name__ == "__main__":
