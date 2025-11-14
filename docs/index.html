@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Walking Tour - Architecture Documentation</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="AI-generated audio walking tour application - Architecture and roadmap documentation">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+  <!-- Custom styling -->
+  <style>
+    :root {
+      --theme-color: #4CAF50;
+      --theme-color-dark: #388E3C;
+    }
+
+    .markdown-section {
+      max-width: 900px;
+    }
+
+    .markdown-section h1 {
+      color: var(--theme-color-dark);
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 0.5em;
+    }
+
+    .markdown-section h2 {
+      color: var(--theme-color-dark);
+      margin-top: 2em;
+    }
+
+    /* Phase status badges */
+    .phase-complete {
+      background-color: #4CAF50;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+
+    .phase-next {
+      background-color: #FF9800;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+
+    .phase-planned {
+      background-color: #9E9E9E;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+
+    /* Cost tables */
+    .markdown-section table {
+      margin: 1.5em 0;
+    }
+
+    .markdown-section table th {
+      background-color: var(--theme-color);
+      color: white;
+    }
+
+    /* Callout boxes */
+    .markdown-section blockquote {
+      border-left: 4px solid var(--theme-color);
+      background-color: #f5f5f5;
+      padding: 1em 1.5em;
+      margin: 1.5em 0;
+    }
+
+    .markdown-section blockquote p {
+      margin: 0.5em 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Loading...</div>
+
+  <script>
+    window.$docsify = {
+      name: 'Walking Tour',
+      repo: 'https://github.com/jules19/walking_tour',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+
+      // Search plugin
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Search documentation...',
+        noData: 'No results found',
+        depth: 3
+      },
+
+      // Pagination
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+
+      // Mermaid configuration
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === "mermaid") {
+              return (
+                '<div class="mermaid">' + code + "</div>"
+              );
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      },
+
+      // Theme configuration
+      themeColor: '#4CAF50',
+
+      // Copy code plugin
+      copyCode: {
+        buttonText: 'Copy',
+        errorText: 'Error',
+        successText: 'Copied'
+      }
+    }
+  </script>
+
+  <!-- Docsify core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <!-- Plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+
+  <!-- Mermaid -->
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      themeVariables: {
+        primaryColor: '#4CAF50',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#388E3C',
+        lineColor: '#388E3C',
+        secondaryColor: '#81C784',
+        tertiaryColor: '#C8E6C9'
+      }
+    });
+    window.mermaid = mermaid;
+  </script>
+
+  <!-- Prism syntax highlighting -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+</body>
+</html>
