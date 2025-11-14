@@ -21,19 +21,31 @@ Phase 1 creates AI-generated tour narratives using GPT-4o with different persona
 
 3. **`.gitignore`** - Prevents committing sensitive files
 
-**Step 1.2: Fact-Checking (NEW)**
+**Step 1.2: Fact-Checking**
 
 4. **`src/fact_checker.py`** - Fact verification module
    - Uses GPT-4o-mini to verify narratives against source facts
    - Detects hallucinations (claims not supported by sources)
    - Returns confidence scores and specific issues found
    - Tests with both good and bad narratives
+   - Distinguishes factual errors from narrative style
 
-5. **`src/generate_tour_with_verification.py`** - Integrated pipeline
+**Step 1.3: Text-to-Speech (NEW)**
+
+5. **`src/text_to_speech.py`** - Audio generation module
+   - Converts narratives to speech using OpenAI TTS API
+   - Maps personas to appropriate voices (historian → onyx, ghost_hunter → fable, etc.)
+   - Adds intelligent pacing with pauses and emphasis
+   - Separates story content from navigation instructions for safety
+   - Estimates audio duration and file size
+
+6. **`src/generate_tour_with_verification.py`** - Complete integrated pipeline
    - Generates narrative with GPT-4o
    - Verifies facts with GPT-4o-mini
+   - Generates audio with OpenAI TTS
    - Marks tours as: approved / review needed / rejected
    - Tracks total costs and token usage
+   - Outputs JSON (data), TXT (readable), and MP3 (audio)
 
 ### Persona Types
 
@@ -110,7 +122,22 @@ This will:
 4. Save results with verification metadata
 5. Display any hallucinations detected
 
-### Test Fact-Checker Only
+### Step 1.3: Generate with Audio (Complete Pipeline)
+
+The verification script now includes audio generation by default:
+
+```bash
+python src/generate_tour_with_verification.py
+```
+
+This complete pipeline will:
+1. Generate narrative with GPT-4o (persona-driven storytelling)
+2. Verify facts with GPT-4o-mini (catch hallucinations)
+3. **Generate audio with OpenAI TTS** (persona-matched voice)
+4. Save all outputs: JSON, TXT, and MP3 files
+5. Display verification results and audio metadata
+
+### Test Individual Modules
 
 Test the fact-checking module independently:
 
@@ -122,12 +149,39 @@ This runs two tests:
 - **Test 1**: Good narrative (only uses provided facts) → should PASS
 - **Test 2**: Bad narrative (contains hallucinations) → should FAIL
 
+Test the text-to-speech module independently:
+
+```bash
+python src/text_to_speech.py
+```
+
+This generates a test audio file with:
+- Sample Richmond Castle narrative
+- Historian voice (onyx)
+- Enhanced pacing and pauses
+
+Test the complete Step 1.3 implementation:
+
+```bash
+python test_step_1_3.py
+```
+
+This interactive test verifies:
+- Audio pacing enhancements
+- TTS generation
+- Complete pipeline (optional)
+
 ### Output Files
 
 Generated files in `output/tours/`:
-- `tour_historian_YYYYMMDD_HHMMSS.json` - Full generation data
+- `tour_historian_YYYYMMDD_HHMMSS.json` - Full generation data + metadata
 - `tour_historian_YYYYMMDD_HHMMSS.txt` - Readable narrative text
-- (same for ghost_hunter and local personas)
+- (same for ghost_hunter, local, and time_traveler personas)
+
+Generated files in `output/audio/`:
+- `tour_historian_YYYYMMDD_HHMMSS.mp3` - Audio file with persona-matched voice
+- Duration: ~2-4 minutes for 3-POI tour
+- Format: MP3, optimized for mobile playback
 
 ### Example Output Structure
 
@@ -144,7 +198,7 @@ Generated files in `output/tours/`:
 }
 ```
 
-**Verified output (Step 1.2):**
+**Verified output with audio (Step 1.3):**
 ```json
 {
   "persona": "historian",
@@ -155,6 +209,14 @@ Generated files in `output/tours/`:
     "confidence": 0.95,
     "hallucinations": [],
     "warnings": []
+  },
+  "audio": {
+    "success": true,
+    "file_path": "output/audio/tour_historian_20251114_120000.mp3",
+    "file_size_kb": 524.3,
+    "voice": "onyx",
+    "model": "tts-1",
+    "estimated_duration_mins": 3.2
   },
   "status": "approved",
   "passed_verification": true,
@@ -171,11 +233,22 @@ The fact-checking rail uses a **double-loop verification** process:
 1. **Generation (GPT-4o)**: Creates the narrative from POI facts
 2. **Verification (GPT-4o-mini)**: Checks narrative against source facts
 
-The verifier is instructed to be strict:
-- Claims must be explicitly stated or directly follow from source facts
-- Minor rephrasing is acceptable (e.g., "1071" vs "eleventh century")
-- Atmospheric descriptions are allowed (e.g., "imagine standing here...")
-- Navigation cues are allowed (e.g., "turn left at...")
+The verifier applies **"strict about facts, lenient about style"**:
+
+**Flags as hallucinations (real problems):**
+- Wrong dates, numbers, measurements
+- Non-existent people, buildings, events
+- False attributions
+- Invented physical features
+- Contradictions of source facts
+
+**Allows (acceptable narrative):**
+- Poetic/metaphorical language ("stones whisper tales")
+- Sensory descriptions ("weathered grey walls")
+- Reasonable historical interpretations
+- Atmospheric framing ("complex tapestry of history")
+- Minor date conversions ("1071" vs "eleventh century")
+- Navigation cues ("turn left at...")
 
 ### Verification Results
 
@@ -236,13 +309,43 @@ When you review the generated narratives, check:
 5. **Beat Sheet Structure**: Does each POI follow the pattern?
    - Hook → Visual Anchor → Story → Synthesis → Directions
 
+## Text-to-Speech System (Step 1.3)
+
+### How It Works
+
+Audio generation uses OpenAI TTS API with intelligent pacing:
+
+1. **Voice Selection**: Personas mapped to appropriate voices
+   - Historian → onyx (deep, authoritative male)
+   - Ghost Hunter → fable (British, mysterious)
+   - Local → nova (warm, friendly female)
+   - Time Traveler → echo (smooth, descriptive male)
+
+2. **Audio Pacing**: Automated enhancements for natural listening
+   - Pauses between POI sections (`...`)
+   - Clear "Now," prefix before navigation (safety-critical)
+   - Breathing room after questions
+   - Emphasis on dates and numbers
+
+3. **Output**: MP3 file optimized for mobile playback
+   - Quality: `tts-1` (cost-effective, sufficient quality)
+   - Speed: 0.95x (slightly slower for clarity)
+   - Duration: ~2-4 minutes for typical 3-POI tour
+
+### Evaluation Checklist
+
+Listen to generated audio and check:
+- ✓ Is pacing natural and comfortable?
+- ✓ Can you understand directions clearly?
+- ✓ Are navigation instructions distinct from story?
+- ✓ Does the voice match the persona?
+- ✓ Are pauses between sections appropriate?
+
 ## Cost Estimates
 
 ### Step 1.1: Generation Only
 
 - **Per narrative**: ~1,500-2,000 tokens total
-  - Prompt: ~1,000 tokens
-  - Completion: ~500-1,000 tokens
 - **Cost**: ~$0.01-0.02 per narrative (GPT-4o pricing)
 - **Test run (3 personas)**: ~$0.03-0.06
 
@@ -250,19 +353,38 @@ When you review the generated narratives, check:
 
 - **Generation (GPT-4o)**: ~1,500-2,000 tokens
 - **Verification (GPT-4o-mini)**: ~1,200-1,500 tokens
-- **Total**: ~2,700-3,500 tokens per verified tour
+- **Total tokens**: ~2,700-3,500 per verified tour
 - **Cost**: ~$0.015-0.025 per verified tour
 - **Test run (1 persona)**: ~$0.02
 
-The fact-checking adds minimal cost (~50% increase) but provides significant quality assurance.
+### Step 1.3: Complete Pipeline (Generation + Verification + Audio)
+
+- **Generation (GPT-4o)**: ~1,500-2,000 tokens (~$0.01)
+- **Verification (GPT-4o-mini)**: ~1,200-1,500 tokens (~$0.005)
+- **Audio (TTS)**: Variable by length (~$0.02-0.04 for 3-POI tour)
+- **Total cost**: ~$0.04-0.06 per complete tour with audio
+- **Test run (1 persona)**: ~$0.05
+
+TTS pricing is based on character count. A typical 3-POI narrative (~500-800 words) costs $0.02-0.04 for audio generation.
 
 ## Next Steps
 
-After generating and reviewing narratives:
+**Phase 1 is complete!** ✓
 
-- **Step 1.2**: Add fact-checking rail to detect hallucinations
-- **Step 1.3**: Integrate text-to-speech to generate audio
-- **Phase 2**: Add route planning and POI scoring
+You now have a working static tour generator that:
+- ✓ Generates persona-driven narratives (GPT-4o)
+- ✓ Verifies factual accuracy (GPT-4o-mini)
+- ✓ Produces high-quality audio (OpenAI TTS)
+- ✓ Outputs tour packages (JSON + TXT + MP3)
+
+**What's Next:**
+
+- **Phase 2**: Route Intelligence
+  - Step 2.1: Implement route planning with walkability constraints
+  - Step 2.2: Add POI scoring based on user preferences
+  - Deliverable: `route_planner.py` that generates optimal routes
+
+See `IMPLEMENTATION_PLAN.md` for the complete roadmap.
 
 ## Troubleshooting
 
