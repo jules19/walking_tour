@@ -1,0 +1,76 @@
+{
+  "generated_at": "2025-11-15T01:24:47.822145",
+  "total_distance_km": 0.32,
+  "total_time_minutes": 51.8,
+  "walking_time_minutes": 3.8,
+  "visit_time_minutes": 48,
+  "pois_visited": 6,
+  "time_remaining": 8.159195897568807,
+  "start_coords": [
+    54.4039,
+    -1.7394
+  ],
+  "return_to_start": false,
+  "route": [
+    {
+      "poi_id": "richmond_001",
+      "poi_name": "Richmond Castle",
+      "coordinates": {
+        "lat": 54.4039,
+        "lng": -1.7394
+      },
+      "distance_from_previous_km": 0.0,
+      "walking_time_minutes": 0.0
+    },
+    {
+      "poi_id": "richmond_011",
+      "poi_name": "Millgate House Gardens",
+      "coordinates": {
+        "lat": 54.4035,
+        "lng": -1.7388
+      },
+      "distance_from_previous_km": 0.05904546594359237,
+      "walking_time_minutes": 0.7085455913231085
+    },
+    {
+      "poi_id": "richmond_014",
+      "poi_name": "The Bar",
+      "coordinates": {
+        "lat": 54.4035,
+        "lng": -1.7372
+      },
+      "distance_from_previous_km": 0.10355775655406275,
+      "walking_time_minutes": 1.2426930786487531
+    },
+    {
+      "poi_id": "richmond_007",
+      "poi_name": "The Green Howards Regimental Museum",
+      "coordinates": {
+        "lat": 54.403,
+        "lng": -1.7365
+      },
+      "distance_from_previous_km": 0.07172017547170614,
+      "walking_time_minutes": 0.8606421056604737
+    },
+    {
+      "poi_id": "richmond_005",
+      "poi_name": "Richmondshire Museum",
+      "coordinates": {
+        "lat": 54.4032,
+        "lng": -1.736
+      },
+      "distance_from_previous_km": 0.03926676617355017,
+      "walking_time_minutes": 0.47120119408260197
+    },
+    {
+      "poi_id": "richmond_004",
+      "poi_name": "The Georgian Theatre Royal",
+      "coordinates": {
+        "lat": 54.4029,
+        "lng": -1.7355
+      },
+      "distance_from_previous_km": 0.04647684439302158,
+      "walking_time_minutes": 0.5577221327162589
+    }
+  ]
+}

@@ -8,14 +8,21 @@ Create "vibe-coded" experiences that go beyond factual information to deliver im
 
 **Starting Location:** Richmond, Northern England (serving as the initial test case)
 
-## ✅ Current Status: Phase 1 Complete!
+## ✅ Current Status: Phase 2 Step 2.1 Complete!
 
-The project has a working **static tour generator** that produces complete audio tour packages:
+The project has evolved from a static tour generator to an **intelligent route planning system**:
 
+### Phase 1: Static Tour Generator ✅
 - ✅ **Narrative Generation** - GPT-4o creates persona-driven stories following "Beat Sheet" structure
 - ✅ **Fact Verification** - GPT-4o-mini validates content (strict about facts, lenient about style)
 - ✅ **Audio Production** - OpenAI TTS generates high-quality audio with persona-matched voices
 - ✅ **Tour Packages** - Outputs JSON (metadata) + TXT (readable) + MP3 (audio)
+
+### Phase 2 Step 2.1: Route Planning ✅
+- ✅ **Automatic Route Generation** - Time-based route planning with walkability constraints
+- ✅ **Distance Optimization** - Greedy nearest-neighbor algorithm for efficient routes
+- ✅ **Interactive Maps** - Folium-based visualization with route details
+- ✅ **Flexible Configuration** - Adjustable start points, durations, visit times
 
 ### Features
 
@@ -45,7 +52,7 @@ cp .env.example .env
 # Edit .env and add your API key
 ```
 
-### Generate a Tour
+### Generate Audio Tours (Phase 1)
 
 ```bash
 # Complete pipeline (narrative + verification + audio)
@@ -57,22 +64,27 @@ This creates:
 - `output/tours/*.txt` - Readable narrative
 - `output/audio/*.mp3` - Audio file (2-4 minutes)
 
-### Test Individual Components
+### Plan Routes (Phase 2)
 
 ```bash
-# Test fact-checker
-python src/fact_checker.py
+# Generate optimal walking routes
+python src/route_planner.py
 
-# Test text-to-speech
-python src/text_to_speech.py
+# Create interactive maps
+python src/visualize_route.py
 
-# Test complete Step 1.3
-python test_step_1_3.py
+# Comprehensive route planning test
+python test_phase2_step1.py
 ```
+
+This creates:
+- `output/routes/*.json` - Route data and statistics
+- `output/maps/*.html` - Interactive maps (open in browser)
 
 ## 📚 Documentation
 
-- **[PHASE1_README.md](PHASE1_README.md)** - Complete Phase 1 guide (setup, usage, evaluation)
+- **[PHASE1_README.md](PHASE1_README.md)** - Audio tour generation (narrative, fact-checking, TTS)
+- **[PHASE2_README.md](PHASE2_README.md)** - Route planning and visualization
 - **[IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md)** - Full roadmap and architecture
 - **[CLAUDE.md](CLAUDE.md)** - Project overview and technical principles
 - **[Walking_tour_outline.md](Walking_tour_outline.md)** - Original vision and architectural blueprints
@@ -80,14 +92,14 @@ python test_step_1_3.py
 ## 🗺️ Roadmap
 
 ### ✅ Phase 1: Static Tour Generator (Complete)
-- Step 1.1: Narrative generation with GPT-4o
-- Step 1.2: Fact-checking rail with GPT-4o-mini
-- Step 1.3: Text-to-speech with OpenAI TTS
+- Step 1.1: Narrative generation with GPT-4o ✅
+- Step 1.2: Fact-checking rail with GPT-4o-mini ✅
+- Step 1.3: Text-to-speech with OpenAI TTS ✅
 
-### 🔜 Phase 2: Route Intelligence (Next)
-- Step 2.1: Route planning with walkability constraints
-- Step 2.2: POI scoring based on user preferences
-- Deliverable: Automatic route generation
+### 🔄 Phase 2: Route Intelligence (In Progress)
+- Step 2.1: Route planning with walkability constraints ✅
+- Step 2.2: POI scoring based on user preferences 🔜
+- Deliverable: Automatic preference-based route generation
 
 ### 📋 Phase 3: RAG & Embeddings
 - Step 3.1: Create embeddings for semantic search
@@ -125,9 +137,10 @@ Pre-generate and cache popular "Base Tours" to reduce per-user costs at scale.
 
 ## 🧪 Key Data
 
-- **POIs**: 10 curated locations in Richmond with enriched facts
-- **Route**: 3 POIs per test tour
-- **Audio Duration**: ~2-4 minutes per tour
+- **POIs**: 15 locations in Richmond (10 with enriched content)
+- **Route Efficiency**: 90-95% of time budget utilized
+- **Walking Speed**: 5 km/h average pedestrian pace
+- **Audio Duration**: ~2-4 minutes per 3-POI tour
 - **Fact-Check Confidence**: 0.9+ threshold for approval
 
 ## 🤝 Contributing
