@@ -1,0 +1,96 @@
+{
+  "generated_at": "2025-11-15T01:24:47.871410",
+  "total_distance_km": 0.53,
+  "total_time_minutes": 86.4,
+  "walking_time_minutes": 6.4,
+  "visit_time_minutes": 80,
+  "pois_visited": 8,
+  "time_remaining": 3.6444750807004027,
+  "start_coords": [
+    54.4028,
+    -1.735
+  ],
+  "return_to_start": true,
+  "route": [
+    {
+      "poi_id": "richmond_002",
+      "poi_name": "Greyfriars Tower",
+      "coordinates": {
+        "lat": 54.4028,
+        "lng": -1.735
+      },
+      "distance_from_previous_km": 0.0,
+      "walking_time_minutes": 0.0
+    },
+    {
+      "poi_id": "richmond_004",
+      "poi_name": "The Georgian Theatre Royal",
+      "coordinates": {
+        "lat": 54.4029,
+        "lng": -1.7355
+      },
+      "distance_from_previous_km": 0.03421932702083271,
+      "walking_time_minutes": 0.41063192424999256
+    },
+    {
+      "poi_id": "richmond_010",
+      "poi_name": "The Old Brewery",
+      "coordinates": {
+        "lat": 54.4027,
+        "lng": -1.7358
+      },
+      "distance_from_previous_km": 0.029523013202866006,
+      "walking_time_minutes": 0.3542761584343921
+    },
+    {
+      "poi_id": "richmond_012",
+      "poi_name": "Trinity Church Square",
+      "coordinates": {
+        "lat": 54.4022,
+        "lng": -1.7358
+      },
+      "distance_from_previous_km": 0.05559746332254483,
+      "walking_time_minutes": 0.667169559870538
+    },
+    {
+      "poi_id": "richmond_003",
+      "poi_name": "Richmond Market Place",
+      "coordinates": {
+        "lat": 54.4025,
+        "lng": -1.7367
+      },
+      "distance_from_previous_km": 0.06712812431947726,
+      "walking_time_minutes": 0.8055374918337271
+    },
+    {
+      "poi_id": "richmond_007",
+      "poi_name": "The Green Howards Regimental Museum",
+      "coordinates": {
+        "lat": 54.403,
+        "lng": -1.7365
+      },
+      "distance_from_previous_km": 0.057084584791884364,
+      "walking_time_minutes": 0.6850150175026124
+    },
+    {
+      "poi_id": "richmond_005",
+      "poi_name": "Richmondshire Museum",
+      "coordinates": {
+        "lat": 54.4032,
+        "lng": -1.736
+      },
+      "distance_from_previous_km": 0.03926676617355017,
+      "walking_time_minutes": 0.47120119408260197
+    },
+    {
+      "poi_id": "richmond_014",
+      "poi_name": "The Bar",
+      "coordinates": {
+        "lat": 54.4035,
+        "lng": -1.7372
+      },
+      "distance_from_previous_km": 0.08452928313901373,
+      "walking_time_minutes": 1.0143513976681646
+    }
+  ]
+}

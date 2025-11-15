@@ -1,0 +1,66 @@
+{
+  "generated_at": "2025-11-15T01:24:47.784949",
+  "total_distance_km": 0.17,
+  "total_time_minutes": 27.1,
+  "walking_time_minutes": 2.1,
+  "visit_time_minutes": 25,
+  "pois_visited": 5,
+  "time_remaining": 2.9317854972641335,
+  "start_coords": [
+    54.4025,
+    -1.7367
+  ],
+  "return_to_start": false,
+  "route": [
+    {
+      "poi_id": "richmond_003",
+      "poi_name": "Richmond Market Place",
+      "coordinates": {
+        "lat": 54.4025,
+        "lng": -1.7367
+      },
+      "distance_from_previous_km": 0.0,
+      "walking_time_minutes": 0.0
+    },
+    {
+      "poi_id": "richmond_007",
+      "poi_name": "The Green Howards Regimental Museum",
+      "coordinates": {
+        "lat": 54.403,
+        "lng": -1.7365
+      },
+      "distance_from_previous_km": 0.057084584791884364,
+      "walking_time_minutes": 0.6850150175026124
+    },
+    {
+      "poi_id": "richmond_005",
+      "poi_name": "Richmondshire Museum",
+      "coordinates": {
+        "lat": 54.4032,
+        "lng": -1.736
+      },
+      "distance_from_previous_km": 0.03926676617355017,
+      "walking_time_minutes": 0.47120119408260197
+    },
+    {
+      "poi_id": "richmond_004",
+      "poi_name": "The Georgian Theatre Royal",
+      "coordinates": {
+        "lat": 54.4029,
+        "lng": -1.7355
+      },
+      "distance_from_previous_km": 0.04647684439302158,
+      "walking_time_minutes": 0.5577221327162589
+    },
+    {
+      "poi_id": "richmond_010",
+      "poi_name": "The Old Brewery",
+      "coordinates": {
+        "lat": 54.4027,
+        "lng": -1.7358
+      },
+      "distance_from_previous_km": 0.029523013202866006,
+      "walking_time_minutes": 0.3542761584343921
+    }
+  ]
+}
