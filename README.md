@@ -8,9 +8,9 @@ Create "vibe-coded" experiences that go beyond factual information to deliver im
 
 **Starting Location:** Richmond, Northern England (serving as the initial test case)
 
-## ✅ Current Status: Phase 2 Step 2.1 Complete!
+## ✅ Current Status: Phase 2 Complete!
 
-The project has evolved from a static tour generator to an **intelligent route planning system**:
+The project has evolved from a static tour generator to a **personalized, intelligent tour system**:
 
 ### Phase 1: Static Tour Generator ✅
 - ✅ **Narrative Generation** - GPT-4o creates persona-driven stories following "Beat Sheet" structure
@@ -18,11 +18,12 @@ The project has evolved from a static tour generator to an **intelligent route p
 - ✅ **Audio Production** - OpenAI TTS generates high-quality audio with persona-matched voices
 - ✅ **Tour Packages** - Outputs JSON (metadata) + TXT (readable) + MP3 (audio)
 
-### Phase 2 Step 2.1: Route Planning ✅
+### Phase 2: Route Intelligence ✅
 - ✅ **Automatic Route Generation** - Time-based route planning with walkability constraints
 - ✅ **Distance Optimization** - Greedy nearest-neighbor algorithm for efficient routes
+- ✅ **POI Scoring** - User preference-based selection (history, ghost stories, architecture, nature)
+- ✅ **Personalized Routes** - Different profiles generate different tours from same starting point
 - ✅ **Interactive Maps** - Folium-based visualization with route details
-- ✅ **Flexible Configuration** - Adjustable start points, durations, visit times
 
 ### Features
 
@@ -67,19 +68,18 @@ This creates:
 ### Plan Routes (Phase 2)
 
 ```bash
-# Generate optimal walking routes
-python src/route_planner.py
-
-# Create interactive maps
-python src/visualize_route.py
-
-# Comprehensive route planning test
+# Step 2.1: Basic route planning (distance-based)
 python test_phase2_step1.py
+
+# Step 2.2: Preference-based routing (personalized)
+python test_phase2_step2.py
 ```
 
 This creates:
 - `output/routes/*.json` - Route data and statistics
 - `output/maps/*.html` - Interactive maps (open in browser)
+- `output/routes_with_preferences/*.json` - Personalized routes
+- `output/maps_with_preferences/*.html` - Maps for different user profiles
 
 ## 📚 Documentation
 
@@ -96,10 +96,10 @@ This creates:
 - Step 1.2: Fact-checking rail with GPT-4o-mini ✅
 - Step 1.3: Text-to-speech with OpenAI TTS ✅
 
-### 🔄 Phase 2: Route Intelligence (In Progress)
+### ✅ Phase 2: Route Intelligence (Complete)
 - Step 2.1: Route planning with walkability constraints ✅
-- Step 2.2: POI scoring based on user preferences 🔜
-- Deliverable: Automatic preference-based route generation
+- Step 2.2: POI scoring based on user preferences ✅
+- Deliverable: Personalized route generation with 6 user profiles
 
 ### 📋 Phase 3: RAG & Embeddings
 - Step 3.1: Create embeddings for semantic search
