@@ -311,14 +311,148 @@ This makes it suitable for:
 - Phase 2.2 will add better optimization
 - For now, it prioritizes nearest-neighbor
 
-## Next Steps
+## Step 2.2: POI Scoring with User Preferences ✅ COMPLETE
 
-**Phase 2, Step 2.2: POI Scoring** (In Progress)
+### Overview
 
-Implement user preference-based POI selection:
-- Define interest vectors (history, horror, architecture, etc.)
-- Score POIs based on vibe tags
-- Integrate scoring into route planning
-- Test with different preference profiles
+Phase 2 Step 2.2 adds **intelligent POI selection** based on user interests. Instead of just picking the nearest POI, the system now scores each POI based on how well it matches the user's preferences.
+
+**Scoring Formula:**
+```
+S_poi = α(interest_match) + β(popularity) - δ(distance)
+```
+
+Where:
+- **interest_match**: How well POI tags match user interests (0-1, using Jaccard similarity)
+- **popularity**: POI importance/quality score based on enrichment (0-1)
+- **distance**: Distance penalty, normalized (0-1)
+- **α, β, δ**: Weighting coefficients (default: 0.6, 0.3, 0.1)
+
+### User Profiles
+
+Six predefined profiles available:
+
+| Profile | Interests | Example POIs Prioritized |
+|---------|-----------|--------------------------|
+| **history_lover** | history, medieval, military, political, victorian | Richmond Castle, Museums, Churches |
+| **ghost_hunter** | haunted, mysterious, ruins, religious, dramatic | Greyfriars Tower (haunted!), St Mary's |
+| **architecture_fan** | architecture, georgian, engineering, folly, medieval | Georgian Theatre, Richmond Bridge |
+| **nature_seeker** | nature, scenic, picturesque, peaceful, romantic | Richmond Falls, Richmond Bridge |
+| **culture_enthusiast** | culture, arts, educational, local, social | Museums, Theatre, Market Place |
+| **casual_tourist** | Balanced mix of all interests | Popular tourist attractions |
+
+### Usage
+
+```python
+from src.route_planner import load_pois, plan_route_with_preferences
+from src.visualize_route import create_route_map
+
+# Load POIs
+pois = load_pois('data/richmond_pois.json')
+
+# Generate route based on user preferences
+route = plan_route_with_preferences(
+    start_coords=(54.4025, -1.7367),
+    candidate_pois=pois,
+    duration_minutes=45,
+    user_profile='ghost_hunter',  # Choose profile!
+    visit_time_per_poi=5,
+    return_to_start=False
+)
+
+# Create map
+create_route_map(route, 'ghost_tour.html', show_all_pois=True, all_pois=pois)
+```
+
+### Testing
+
+```bash
+# Run comprehensive preference-based routing test
+python test_phase2_step2.py
+```
+
+This generates 4 different routes from the same starting point, one for each major profile. Maps are saved to `output/maps_with_preferences/`.
+
+### Key Results from Testing
+
+**Starting from Market Place, 45-minute tours:**
+
+- **History Lover**: 6 POIs, starts with **Richmond Castle** (score: 0.515)
+- **Ghost Hunter**: 7 POIs, starts with **Greyfriars Tower** (score: 0.607 - haunted!)
+- **Architecture Fan**: 6 POIs, includes **Richmond Bridge** (engineering interest)
+- **Nature Seeker**: 6 POIs, uniquely visits **Richmond Falls** (score: 0.852 - perfect match!)
+
+**Observations:**
+- ✅ Different profiles generate different routes
+- ✅ High-interest POIs are prioritized even if not nearest
+- ✅ Scoring successfully balances interest vs. distance
+
+### How It Works
+
+1. **User selects a profile** (or defines custom interests)
+2. **At each step**, system scores all unvisited POIs:
+   - Calculate interest match using vibe tag overlap
+   - Add popularity bonus for enriched POIs
+   - Subtract distance penalty
+3. **Select highest-scoring POI** that fits time budget
+4. **Repeat** until time exhausted
+
+### Comparison: Step 2.1 vs Step 2.2
+
+| Aspect | Step 2.1 (Nearest) | Step 2.2 (Preferences) |
+|--------|-------------------|------------------------|
+| **Selection** | Always picks nearest POI | Picks best-scoring POI |
+| **Routes** | Same for all users | Personalized per profile |
+| **Distance** | Minimized | Balanced with interest |
+| **Use case** | Quick optimization | Personalized experiences |
+
+### Custom Profiles
+
+You can create custom profiles:
+
+```python
+# Define custom interests
+my_interests = ['military', 'history', 'dramatic']
+
+# Use with scoring weights
+route = plan_route_with_preferences(
+    ...,
+    user_profile='custom',  # Won't match, uses casual_tourist
+    scoring_weights={'alpha': 0.7, 'beta': 0.2, 'delta': 0.1}  # Prioritize interests more
+)
+```
+
+Or modify `src/poi_scorer.py` to add permanent profiles.
+
+### Files Created
+
+- **`src/poi_scorer.py`** - POI scoring engine with user profiles
+- **`src/route_planner.py`** - Updated with `plan_route_with_preferences()`
+- **`test_phase2_step2.py`** - Comprehensive preference testing
+
+### Output Files
+
+- **Routes**: `output/routes_with_preferences/*.json`
+- **Maps**: `output/maps_with_preferences/*.html` (color-coded by profile)
+
+## Phase 2 Complete! ✅
+
+Both Step 2.1 (basic routing) and Step 2.2 (preference-based scoring) are now implemented and tested.
+
+**What we built:**
+- ✅ Time-based route planning with walkability constraints
+- ✅ Distance optimization using greedy nearest-neighbor
+- ✅ User preference profiles and POI scoring
+- ✅ Personalized route generation
+- ✅ Interactive map visualization
+
+**Next Phase:**
+
+**Phase 3: RAG & Embeddings**
+- Step 3.1: Create embeddings for semantic search
+- Step 3.2: Replace keyword matching with vector similarity
+- Step 3.3: Context-aware narrative generation
+
+This will upgrade from keyword-based tag matching to semantic understanding, enabling even better POI matching and narrative generation.
 
 See `IMPLEMENTATION_PLAN.md` for the complete roadmap.

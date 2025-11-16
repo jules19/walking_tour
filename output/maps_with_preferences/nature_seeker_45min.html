@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_92f3b85fdaf422f5c8adb24491e4207d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed;
+                bottom: 50px; right: 50px; width: 280px; height: auto;
+                background-color: white; z-index:9999; font-size:14px;
+                border:2px solid grey; border-radius: 5px; padding: 10px">
+        <h4 style="margin-top: 0;">Route Summary</h4>
+        <p><b>POIs visited:</b> 6</p>
+        <p><b>Total distance:</b> 0.92 km</p>
+        <p><b>Walking time:</b> 11.0 min</p>
+        <p><b>Visit time:</b> 30 min</p>
+        <p><b>Total time:</b> 41.0 min</p>
+        
+    </div>
+    
+    
+            <div class="folium-map" id="map_92f3b85fdaf422f5c8adb24491e4207d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_92f3b85fdaf422f5c8adb24491e4207d = L.map(
+                "map_92f3b85fdaf422f5c8adb24491e4207d",
+                {
+                    center: [54.40318333333334, -1.7375],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 15,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_8d5054c558e5e295b15ce69142276f9e = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_8d5054c558e5e295b15ce69142276f9e.addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var marker_335a2765f90667c81858a2f65559e72d = L.marker(
+                [54.4025, -1.7367],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_e4856acf20af8bbdcc0223c0faeec29c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "play",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f585789997070d77166370bc3c267ec1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5afd061f107dd8ea723940bf16f04ae3 = $(`<div id="html_5afd061f107dd8ea723940bf16f04ae3" style="width: 100.0%; height: 100.0%;"><b>Start</b></div>`)[0];
+                popup_f585789997070d77166370bc3c267ec1.setContent(html_5afd061f107dd8ea723940bf16f04ae3);
+            
+        
+
+        marker_335a2765f90667c81858a2f65559e72d.bindPopup(popup_f585789997070d77166370bc3c267ec1)
+        ;
+
+        
+    
+    
+            marker_335a2765f90667c81858a2f65559e72d.bindTooltip(
+                `<div>
+                     Starting Point
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_335a2765f90667c81858a2f65559e72d.setIcon(icon_e4856acf20af8bbdcc0223c0faeec29c);
+            
+    
+            var marker_1f7ec9e595abd85b529a1b9deba1ad21 = L.marker(
+                [54.4045, -1.741],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_a2d320df0b36e66ae1fbae2c3e5216c6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf4b2cb85b2d01a4459ed63b8b4ebf9b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0fa77710d0a1b1e6e1d1385980b7e4d6 = $(`<div id="html_0fa77710d0a1b1e6e1d1385980b7e4d6" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px">             <h4>1. Richmond Falls</h4>             <p><b>Distance from previous:</b> 0.36 km</p>             <p><b>Walking time:</b> 4.3 min</p>         <p><b>Tags:</b> nature, scenic, peaceful, romantic, picturesque</p><p><i>Series of waterfalls on the River Swale beneath the castle</i></p></div></div>`)[0];
+                popup_cf4b2cb85b2d01a4459ed63b8b4ebf9b.setContent(html_0fa77710d0a1b1e6e1d1385980b7e4d6);
+            
+        
+
+        marker_1f7ec9e595abd85b529a1b9deba1ad21.bindPopup(popup_cf4b2cb85b2d01a4459ed63b8b4ebf9b)
+        ;
+
+        
+    
+    
+            marker_1f7ec9e595abd85b529a1b9deba1ad21.bindTooltip(
+                `<div>
+                     1. Richmond Falls
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1f7ec9e595abd85b529a1b9deba1ad21.setIcon(icon_a2d320df0b36e66ae1fbae2c3e5216c6);
+            
+    
+            var marker_d20b44e6b44639c2aa5d6a947f6cef3c = L.marker(
+                [54.4045, -1.741],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var div_icon_655eb51fd8b4ee27ec77cd72cfd1a583 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 14pt; color: white; font-weight: bold; background-color: red; border-radius: 50%; width: 25px; height: 25px; text-align: center; line-height: 25px;\"\u003e1\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_d20b44e6b44639c2aa5d6a947f6cef3c.setIcon(div_icon_655eb51fd8b4ee27ec77cd72cfd1a583);
+            
+    
+            var marker_909e065c11dde09de04d8ce41ddfa827 = L.marker(
+                [54.4042, -1.7402],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_6f31bae36f4b71e58022deae58dd4d56 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0f91b2c3b2218feb53462f2f133f8061 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4bd47bd1b1cf309ce1a0288b375a73a4 = $(`<div id="html_4bd47bd1b1cf309ce1a0288b375a73a4" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px">             <h4>2. Richmond Bridge</h4>             <p><b>Distance from previous:</b> 0.06 km</p>             <p><b>Walking time:</b> 0.7 min</p>         <p><b>Tags:</b> architecture, scenic, engineering, nature, picturesque</p><p><i>Medieval stone bridge over River Swale, dating from 1789</i></p></div></div>`)[0];
+                popup_0f91b2c3b2218feb53462f2f133f8061.setContent(html_4bd47bd1b1cf309ce1a0288b375a73a4);
+            
+        
+
+        marker_909e065c11dde09de04d8ce41ddfa827.bindPopup(popup_0f91b2c3b2218feb53462f2f133f8061)
+        ;
+
+        
+    
+    
+            marker_909e065c11dde09de04d8ce41ddfa827.bindTooltip(
+                `<div>
+                     2. Richmond Bridge
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_909e065c11dde09de04d8ce41ddfa827.setIcon(icon_6f31bae36f4b71e58022deae58dd4d56);
+            
+    
+            var marker_a883eed81b8f0163cb71d7d677ba27fe = L.marker(
+                [54.4042, -1.7402],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var div_icon_39d29cd80652bb715bf09339f7c25c07 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 14pt; color: white; font-weight: bold; background-color: red; border-radius: 50%; width: 25px; height: 25px; text-align: center; line-height: 25px;\"\u003e2\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_a883eed81b8f0163cb71d7d677ba27fe.setIcon(div_icon_39d29cd80652bb715bf09339f7c25c07);
+            
+    
+            var marker_665eacda212d2255fafb6911192398d2 = L.marker(
+                [54.402, -1.7375],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_e3b2aa27550f08efc55a2015a8d581f4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0fc565b70e662d4cc829429c3371426a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_af8499b4fe2bfa724e043bd541c5eb23 = $(`<div id="html_af8499b4fe2bfa724e043bd541c5eb23" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px">             <h4>3. St Mary's Church</h4>             <p><b>Distance from previous:</b> 0.30 km</p>             <p><b>Walking time:</b> 3.6 min</p>         <p><b>Tags:</b> history, religious, architecture, peaceful, medieval</p><p><i>Medieval parish church with Victorian restoration</i></p></div></div>`)[0];
+                popup_0fc565b70e662d4cc829429c3371426a.setContent(html_af8499b4fe2bfa724e043bd541c5eb23);
+            
+        
+
+        marker_665eacda212d2255fafb6911192398d2.bindPopup(popup_0fc565b70e662d4cc829429c3371426a)
+        ;
+
+        
+    
+    
+            marker_665eacda212d2255fafb6911192398d2.bindTooltip(
+                `<div>
+                     3. St Mary's Church
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_665eacda212d2255fafb6911192398d2.setIcon(icon_e3b2aa27550f08efc55a2015a8d581f4);
+            
+    
+            var marker_1f6ae2a07cdd0bad65c5c65d415dba07 = L.marker(
+                [54.402, -1.7375],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var div_icon_898cf4f2ac5ba012f898e762ee981694 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 14pt; color: white; font-weight: bold; background-color: red; border-radius: 50%; width: 25px; height: 25px; text-align: center; line-height: 25px;\"\u003e3\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_1f6ae2a07cdd0bad65c5c65d415dba07.setIcon(div_icon_898cf4f2ac5ba012f898e762ee981694);
+            
+    
+            var marker_d97aba9960e32acca2eae42d701b4f59 = L.marker(
+                [54.4027, -1.7358],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_a1327a09fa4269c7aaf87ac6af3fc058 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_699e0f4a76a3545714597c66c23dee1c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b8ebba4ca29f2b56a431f83161cefec4 = $(`<div id="html_b8ebba4ca29f2b56a431f83161cefec4" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px">             <h4>4. The Old Brewery</h4>             <p><b>Distance from previous:</b> 0.13 km</p>             <p><b>Walking time:</b> 1.6 min</p>         <p><b>Tags:</b> architecture, history, folly, scenic, political</p><p><i>19th-century brewery building, now converted</i></p></div></div>`)[0];
+                popup_699e0f4a76a3545714597c66c23dee1c.setContent(html_b8ebba4ca29f2b56a431f83161cefec4);
+            
+        
+
+        marker_d97aba9960e32acca2eae42d701b4f59.bindPopup(popup_699e0f4a76a3545714597c66c23dee1c)
+        ;
+
+        
+    
+    
+            marker_d97aba9960e32acca2eae42d701b4f59.bindTooltip(
+                `<div>
+                     4. The Old Brewery
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d97aba9960e32acca2eae42d701b4f59.setIcon(icon_a1327a09fa4269c7aaf87ac6af3fc058);
+            
+    
+            var marker_3e0cfd9de24cb6a026d14ac593c55fbf = L.marker(
+                [54.4027, -1.7358],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var div_icon_8524a439e22b63c40bcd3aa633a395d4 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 14pt; color: white; font-weight: bold; background-color: red; border-radius: 50%; width: 25px; height: 25px; text-align: center; line-height: 25px;\"\u003e4\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_3e0cfd9de24cb6a026d14ac593c55fbf.setIcon(div_icon_8524a439e22b63c40bcd3aa633a395d4);
+            
+    
+            var marker_1eb37cf60595cbb7465bad387dbcd624 = L.marker(
+                [54.4029, -1.7355],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_2e83bac7a3efb3ae3ce2a36052313758 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eca23a4d192001aa63ad45bd2fd1af3f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f636f2ddbb051e6df0465b0cbd68c2fc = $(`<div id="html_f636f2ddbb051e6df0465b0cbd68c2fc" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px">             <h4>5. The Georgian Theatre Royal</h4>             <p><b>Distance from previous:</b> 0.03 km</p>             <p><b>Walking time:</b> 0.4 min</p>         <p><b>Tags:</b> architecture, culture, history, arts, georgian</p><p><i>Built in 1788, Britain's most complete Georgian playhouse</i></p></div></div>`)[0];
+                popup_eca23a4d192001aa63ad45bd2fd1af3f.setContent(html_f636f2ddbb051e6df0465b0cbd68c2fc);
+            
+        
+
+        marker_1eb37cf60595cbb7465bad387dbcd624.bindPopup(popup_eca23a4d192001aa63ad45bd2fd1af3f)
+        ;
+
+        
+    
+    
+            marker_1eb37cf60595cbb7465bad387dbcd624.bindTooltip(
+                `<div>
+                     5. The Georgian Theatre Royal
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1eb37cf60595cbb7465bad387dbcd624.setIcon(icon_2e83bac7a3efb3ae3ce2a36052313758);
+            
+    
+            var marker_d55590c833ef7c8a4f552299a0b786fb = L.marker(
+                [54.4029, -1.7355],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var div_icon_ea8f80fd73e9242c55fb7e46b15ed973 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 14pt; color: white; font-weight: bold; background-color: red; border-radius: 50%; width: 25px; height: 25px; text-align: center; line-height: 25px;\"\u003e5\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_d55590c833ef7c8a4f552299a0b786fb.setIcon(div_icon_ea8f80fd73e9242c55fb7e46b15ed973);
+            
+    
+            var marker_304a156583a60c0f7b1d562507d79472 = L.marker(
+                [54.4028, -1.735],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_f1a5798d70a1f7badfc07ad3cfacb4b9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3d406d98a8dfaf4ac5f9c81763912840 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_92aecc06f6c1dd26bfc3541384766f54 = $(`<div id="html_92aecc06f6c1dd26bfc3541384766f54" style="width: 100.0%; height: 100.0%;">         <div style="width: 250px">             <h4>6. Greyfriars Tower</h4>             <p><b>Distance from previous:</b> 0.03 km</p>             <p><b>Walking time:</b> 0.4 min</p>         <p><b>Tags:</b> history, ruins, religious, haunted, mysterious</p><p><i>15th-century bell tower, sole remnant of Franciscan friary</i></p></div></div>`)[0];
+                popup_3d406d98a8dfaf4ac5f9c81763912840.setContent(html_92aecc06f6c1dd26bfc3541384766f54);
+            
+        
+
+        marker_304a156583a60c0f7b1d562507d79472.bindPopup(popup_3d406d98a8dfaf4ac5f9c81763912840)
+        ;
+
+        
+    
+    
+            marker_304a156583a60c0f7b1d562507d79472.bindTooltip(
+                `<div>
+                     6. Greyfriars Tower
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_304a156583a60c0f7b1d562507d79472.setIcon(icon_f1a5798d70a1f7badfc07ad3cfacb4b9);
+            
+    
+            var marker_55a2b0f306c9e824f3a4baff7bc277a4 = L.marker(
+                [54.4028, -1.735],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var div_icon_6f236cc6e40c388cb0d7145908b4583e = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 14pt; color: white; font-weight: bold; background-color: red; border-radius: 50%; width: 25px; height: 25px; text-align: center; line-height: 25px;\"\u003e6\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_55a2b0f306c9e824f3a4baff7bc277a4.setIcon(div_icon_6f236cc6e40c388cb0d7145908b4583e);
+            
+    
+            var poly_line_58e249e7c33c401f79d0e8c330d53246 = L.polyline(
+                [[54.4025, -1.7367], [54.4045, -1.741], [54.4042, -1.7402], [54.402, -1.7375], [54.4027, -1.7358], [54.4029, -1.7355], [54.4028, -1.735]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+        var popup_8dc7333863ac7f1e21d9961f4a3e6e06 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cb0ae3174546bdb9e1042ae389a6f2a5 = $(`<div id="html_cb0ae3174546bdb9e1042ae389a6f2a5" style="width: 100.0%; height: 100.0%;">Total distance: 0.92 km</div>`)[0];
+                popup_8dc7333863ac7f1e21d9961f4a3e6e06.setContent(html_cb0ae3174546bdb9e1042ae389a6f2a5);
+            
+        
+
+        poly_line_58e249e7c33c401f79d0e8c330d53246.bindPopup(popup_8dc7333863ac7f1e21d9961f4a3e6e06)
+        ;
+
+        
+    
+    
+            var marker_f2e9f42df5f675cd40fa3c028221775c = L.marker(
+                [54.4039, -1.7394],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_a488189bb27bfbb24e97c35ee2ef680d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3f1fa4a5fb570e677aafc6729547a278 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_592411b70d3a714c8928e8afffdd2afd = $(`<div id="html_592411b70d3a714c8928e8afffdd2afd" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px">                 <h4>Richmond Castle</h4>                 <p><i>Not included in route</i></p>             <p>Norman castle built in 1071, one of the oldest stone castles in England</p></div></div>`)[0];
+                popup_3f1fa4a5fb570e677aafc6729547a278.setContent(html_592411b70d3a714c8928e8afffdd2afd);
+            
+        
+
+        marker_f2e9f42df5f675cd40fa3c028221775c.bindPopup(popup_3f1fa4a5fb570e677aafc6729547a278)
+        ;
+
+        
+    
+    
+            marker_f2e9f42df5f675cd40fa3c028221775c.bindTooltip(
+                `<div>
+                     Richmond Castle
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f2e9f42df5f675cd40fa3c028221775c.setIcon(icon_a488189bb27bfbb24e97c35ee2ef680d);
+            
+    
+            var marker_b1b19b65859630a83e3e5a23fe17cec7 = L.marker(
+                [54.4025, -1.7367],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_b1b35dfbe90ce2ad3485af9785e46137 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4aeac250c2486651dc24db510f6a7305 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c5f42f9ef74ff15781d665a5b21fcf7d = $(`<div id="html_c5f42f9ef74ff15781d665a5b21fcf7d" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px">                 <h4>Richmond Market Place</h4>                 <p><i>Not included in route</i></p>             <p>Historic cobbled market square, one of the largest in England</p></div></div>`)[0];
+                popup_4aeac250c2486651dc24db510f6a7305.setContent(html_c5f42f9ef74ff15781d665a5b21fcf7d);
+            
+        
+
+        marker_b1b19b65859630a83e3e5a23fe17cec7.bindPopup(popup_4aeac250c2486651dc24db510f6a7305)
+        ;
+
+        
+    
+    
+            marker_b1b19b65859630a83e3e5a23fe17cec7.bindTooltip(
+                `<div>
+                     Richmond Market Place
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b1b19b65859630a83e3e5a23fe17cec7.setIcon(icon_b1b35dfbe90ce2ad3485af9785e46137);
+            
+    
+            var marker_d8319ea718b873987b7d7d60221e8f93 = L.marker(
+                [54.4032, -1.736],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_6900fdb8e55c70384e203586497f1f53 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8fa6d45706998faa8c9731138c869372 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4e685521e87996416f4e0abed0c79912 = $(`<div id="html_4e685521e87996416f4e0abed0c79912" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px">                 <h4>Richmondshire Museum</h4>                 <p><i>Not included in route</i></p>             <p>Local history museum in former church building</p></div></div>`)[0];
+                popup_8fa6d45706998faa8c9731138c869372.setContent(html_4e685521e87996416f4e0abed0c79912);
+            
+        
+
+        marker_d8319ea718b873987b7d7d60221e8f93.bindPopup(popup_8fa6d45706998faa8c9731138c869372)
+        ;
+
+        
+    
+    
+            marker_d8319ea718b873987b7d7d60221e8f93.bindTooltip(
+                `<div>
+                     Richmondshire Museum
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d8319ea718b873987b7d7d60221e8f93.setIcon(icon_6900fdb8e55c70384e203586497f1f53);
+            
+    
+            var marker_e0caea9a27fb3bf76cc9263f8ec6ca95 = L.marker(
+                [54.403, -1.7365],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_47d02b4a4eba77e281eef8d9021eb515 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7dc7ebcd0b76c09f2564e249cd835554 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ce0df50b8b98c56bf3713578b4864674 = $(`<div id="html_ce0df50b8b98c56bf3713578b4864674" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px">                 <h4>The Green Howards Regimental Museum</h4>                 <p><i>Not included in route</i></p>             <p>Military museum covering 300 years of Yorkshire regiment history</p></div></div>`)[0];
+                popup_7dc7ebcd0b76c09f2564e249cd835554.setContent(html_ce0df50b8b98c56bf3713578b4864674);
+            
+        
+
+        marker_e0caea9a27fb3bf76cc9263f8ec6ca95.bindPopup(popup_7dc7ebcd0b76c09f2564e249cd835554)
+        ;
+
+        
+    
+    
+            marker_e0caea9a27fb3bf76cc9263f8ec6ca95.bindTooltip(
+                `<div>
+                     The Green Howards Regimental Museum
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e0caea9a27fb3bf76cc9263f8ec6ca95.setIcon(icon_47d02b4a4eba77e281eef8d9021eb515);
+            
+    
+            var marker_22e84e6475b17d05ac6b6ab6312735e4 = L.marker(
+                [54.4035, -1.7388],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_1d38d594ee800381bef9893b01343876 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_03c229eaa018d299b9c4e4ee07592c70 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e95ae93bc9c797e1bb166e7919837adc = $(`<div id="html_e95ae93bc9c797e1bb166e7919837adc" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px">                 <h4>Millgate House Gardens</h4>                 <p><i>Not included in route</i></p>             <p>Award-winning terraced garden near castle</p></div></div>`)[0];
+                popup_03c229eaa018d299b9c4e4ee07592c70.setContent(html_e95ae93bc9c797e1bb166e7919837adc);
+            
+        
+
+        marker_22e84e6475b17d05ac6b6ab6312735e4.bindPopup(popup_03c229eaa018d299b9c4e4ee07592c70)
+        ;
+
+        
+    
+    
+            marker_22e84e6475b17d05ac6b6ab6312735e4.bindTooltip(
+                `<div>
+                     Millgate House Gardens
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_22e84e6475b17d05ac6b6ab6312735e4.setIcon(icon_1d38d594ee800381bef9893b01343876);
+            
+    
+            var marker_8d963ea3c6f8c91333a3f90fd6845607 = L.marker(
+                [54.4022, -1.7358],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_cb795d80c304101d5d2cd4e13f51f6ed = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0938ca06e63f9bc88aac3c07cf670911 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a528cca9a91f4a4a5117e21c76545fa3 = $(`<div id="html_a528cca9a91f4a4a5117e21c76545fa3" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px">                 <h4>Trinity Church Square</h4>                 <p><i>Not included in route</i></p>             <p>Former Holy Trinity Church, now community venue</p></div></div>`)[0];
+                popup_0938ca06e63f9bc88aac3c07cf670911.setContent(html_a528cca9a91f4a4a5117e21c76545fa3);
+            
+        
+
+        marker_8d963ea3c6f8c91333a3f90fd6845607.bindPopup(popup_0938ca06e63f9bc88aac3c07cf670911)
+        ;
+
+        
+    
+    
+            marker_8d963ea3c6f8c91333a3f90fd6845607.bindTooltip(
+                `<div>
+                     Trinity Church Square
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8d963ea3c6f8c91333a3f90fd6845607.setIcon(icon_cb795d80c304101d5d2cd4e13f51f6ed);
+            
+    
+            var marker_8b383e854066197c13d2c56dcaba4a55 = L.marker(
+                [54.401, -1.742],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_1056bd466e5bb43e0b437259814b21dd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5791204c1454a6764023797a23d76377 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_517e35869f69387fdfa4dacb9f8075e0 = $(`<div id="html_517e35869f69387fdfa4dacb9f8075e0" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px">                 <h4>Culloden Tower</h4>                 <p><i>Not included in route</i></p>             <p>18th-century folly built to commemorate Battle of Culloden</p></div></div>`)[0];
+                popup_5791204c1454a6764023797a23d76377.setContent(html_517e35869f69387fdfa4dacb9f8075e0);
+            
+        
+
+        marker_8b383e854066197c13d2c56dcaba4a55.bindPopup(popup_5791204c1454a6764023797a23d76377)
+        ;
+
+        
+    
+    
+            marker_8b383e854066197c13d2c56dcaba4a55.bindTooltip(
+                `<div>
+                     Culloden Tower
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8b383e854066197c13d2c56dcaba4a55.setIcon(icon_1056bd466e5bb43e0b437259814b21dd);
+            
+    
+            var marker_b2240cbdb721c0436e7ce188e75876b8 = L.marker(
+                [54.4035, -1.7372],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_8765a49d5de8baa03755ca5e7143ac72 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6191d1ea3b689eed311094088db3ddf6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a31406ad458c652ce78eba0d9019f255 = $(`<div id="html_a31406ad458c652ce78eba0d9019f255" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px">                 <h4>The Bar</h4>                 <p><i>Not included in route</i></p>             <p>Medieval archway and former toll gate</p></div></div>`)[0];
+                popup_6191d1ea3b689eed311094088db3ddf6.setContent(html_a31406ad458c652ce78eba0d9019f255);
+            
+        
+
+        marker_b2240cbdb721c0436e7ce188e75876b8.bindPopup(popup_6191d1ea3b689eed311094088db3ddf6)
+        ;
+
+        
+    
+    
+            marker_b2240cbdb721c0436e7ce188e75876b8.bindTooltip(
+                `<div>
+                     The Bar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b2240cbdb721c0436e7ce188e75876b8.setIcon(icon_8765a49d5de8baa03755ca5e7143ac72);
+            
+    
+            var marker_7045b1c94a804cc879ab9486ac12fda0 = L.marker(
+                [54.3995, -1.734],
+                {
+}
+            ).addTo(map_92f3b85fdaf422f5c8adb24491e4207d);
+        
+    
+            var icon_251f6b16f6aa6ffe194cd1fc360f6656 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "map-marker",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ce7c74f0120afae2ee4be793ccabdb7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_12e019075c8be483ce67ce916fd176c3 = $(`<div id="html_12e019075c8be483ce67ce916fd176c3" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px">                 <h4>Richmond Station</h4>                 <p><i>Not included in route</i></p>             <p>Former railway station, now cinema and heritage center</p></div></div>`)[0];
+                popup_3ce7c74f0120afae2ee4be793ccabdb7.setContent(html_12e019075c8be483ce67ce916fd176c3);
+            
+        
+
+        marker_7045b1c94a804cc879ab9486ac12fda0.bindPopup(popup_3ce7c74f0120afae2ee4be793ccabdb7)
+        ;
+
+        
+    
+    
+            marker_7045b1c94a804cc879ab9486ac12fda0.bindTooltip(
+                `<div>
+                     Richmond Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7045b1c94a804cc879ab9486ac12fda0.setIcon(icon_251f6b16f6aa6ffe194cd1fc360f6656);
+            
+</script>
+</html>

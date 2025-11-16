@@ -1,25 +1,46 @@
 """
-Route Planning Module - Phase 2, Step 2.1
+Route Planning Module - Phase 2, Step 2.1 & 2.2
 
-Implements basic route planning with walkability constraints.
-Uses greedy nearest-neighbor algorithm with time budget constraints.
+Implements route planning with walkability constraints and user preference scoring.
 
-Algorithm:
+Algorithms:
+- plan_route(): Greedy nearest-neighbor (Step 2.1)
+- plan_route_with_preferences(): Preference-based scoring (Step 2.2)
+
+Step 2.1 Algorithm (Distance-based):
 1. Start at given coordinates
 2. Find nearest unvisited POI
 3. Check if time budget allows visiting it
 4. Add to route if feasible, repeat until time exhausted
 
-Future improvements (Phase 2.2):
-- POI scoring based on user preferences
-- Better routing algorithms (A*, TSP solvers)
-- Integration with real routing services (OSRM, Mapbox)
+Step 2.2 Algorithm (Preference-based):
+1. Start at given coordinates
+2. Score all unvisited POIs based on user preferences
+3. Select highest-scoring POI that fits time budget
+4. Add to route, repeat until time exhausted
 """
 
 import json
 import math
+import os
+import sys
 from typing import List, Dict, Tuple, Optional
 from datetime import datetime
+
+# Add src directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+# Import POI scoring (for Phase 2.2)
+try:
+    import poi_scorer
+    score_poi = poi_scorer.score_poi
+    USER_PROFILES = poi_scorer.USER_PROFILES
+    DEFAULT_WEIGHTS = poi_scorer.DEFAULT_WEIGHTS
+except ImportError:
+    # Allow module to work without poi_scorer for basic routing
+    score_poi = None
+    USER_PROFILES = {}
+    DEFAULT_WEIGHTS = {}
 
 
 # Constants
@@ -172,6 +193,129 @@ def plan_route(
         'start_coords': start_coords,
         'return_to_start': return_to_start,
         'return_distance_km': round(return_distance, 2) if return_to_start else 0
+    }
+
+
+def plan_route_with_preferences(
+    start_coords: Tuple[float, float],
+    candidate_pois: List[Dict],
+    duration_minutes: int,
+    user_profile: str = 'casual_tourist',
+    visit_time_per_poi: int = DEFAULT_VISIT_TIME_MINUTES,
+    return_to_start: bool = False,
+    scoring_weights: Optional[Dict] = None
+) -> Dict:
+    """
+    Plan a route using user preference-based POI scoring (Phase 2.2).
+
+    Uses POI scoring to prioritize POIs based on user interests rather than
+    just proximity. Scores POIs using: S = α(interest) + β(popularity) - δ(distance)
+
+    Args:
+        start_coords: (lat, lng) starting coordinates
+        candidate_pois: List of POI dictionaries with 'geo' and 'vibe_tags'
+        duration_minutes: Total time budget in minutes
+        user_profile: Profile name (e.g., 'history_lover', 'ghost_hunter')
+        visit_time_per_poi: Time to spend at each POI (minutes)
+        return_to_start: Whether route should return to starting point
+        scoring_weights: Optional custom weights for scoring (alpha, beta, delta)
+
+    Returns:
+        Dictionary containing route info (same format as plan_route) plus:
+        - user_profile: Profile used
+        - poi_scores: Score for each POI in route
+    """
+    if score_poi is None:
+        raise ImportError("poi_scorer module required for preference-based routing")
+
+    # Get user interests
+    if user_profile in USER_PROFILES:
+        interests = USER_PROFILES[user_profile]['interests']
+    else:
+        interests = USER_PROFILES['casual_tourist']['interests']
+
+    weights = scoring_weights if scoring_weights else DEFAULT_WEIGHTS
+
+    route = []
+    visited_ids = set()
+    current_position = start_coords
+    time_used = 0
+    total_distance = 0
+    poi_scores = []
+
+    while True:
+        # Score all unvisited POIs from current position
+        best_poi = None
+        best_score = -float('inf')
+        best_distance = 0
+
+        for poi in candidate_pois:
+            # Skip if already visited or missing data
+            if poi['id'] in visited_ids:
+                continue
+            if 'geo' not in poi or 'lat' not in poi['geo'] or 'lng' not in poi['geo']:
+                continue
+
+            # Calculate score for this POI
+            scored = score_poi(poi, interests, current_position, weights)
+
+            if scored['score'] > best_score:
+                best_score = scored['score']
+                best_poi = poi
+                best_distance = scored['components']['distance_km']
+
+        # No more POIs to visit
+        if best_poi is None:
+            break
+
+        # Calculate time needed to visit this POI
+        walking_time = estimate_walking_time(best_distance)
+        total_time_needed = walking_time + visit_time_per_poi
+
+        # Check if we have time
+        if time_used + total_time_needed > duration_minutes:
+            break
+
+        # Add POI to route
+        route.append({
+            'poi': best_poi,
+            'distance_from_previous_km': best_distance,
+            'walking_time_minutes': walking_time
+        })
+
+        poi_scores.append(best_score)
+        visited_ids.add(best_poi['id'])
+        current_position = (best_poi['geo']['lat'], best_poi['geo']['lng'])
+        time_used += total_time_needed
+        total_distance += best_distance
+
+    # Handle return to start if requested
+    return_distance = 0
+    return_time = 0
+    if return_to_start and len(route) > 0:
+        return_distance = calculate_distance(current_position, start_coords)
+        return_time = estimate_walking_time(return_distance)
+
+        if time_used + return_time <= duration_minutes:
+            total_distance += return_distance
+            time_used += return_time
+
+    walking_time = sum(stop['walking_time_minutes'] for stop in route) + return_time
+    visit_time = len(route) * visit_time_per_poi
+
+    return {
+        'route': route,
+        'total_distance_km': round(total_distance, 2),
+        'total_time_minutes': round(time_used, 1),
+        'walking_time_minutes': round(walking_time, 1),
+        'visit_time_minutes': visit_time,
+        'pois_visited': len(route),
+        'time_remaining': duration_minutes - time_used,
+        'start_coords': start_coords,
+        'return_to_start': return_to_start,
+        'return_distance_km': round(return_distance, 2) if return_to_start else 0,
+        'user_profile': user_profile,
+        'poi_scores': poi_scores
     }
 
 
