@@ -85,6 +85,7 @@ This creates:
 
 - **[PHASE1_README.md](PHASE1_README.md)** - Audio tour generation (narrative, fact-checking, TTS)
 - **[PHASE2_README.md](PHASE2_README.md)** - Route planning and visualization
+- **[PHASE2.5_AUTO_ENRICHMENT.md](PHASE2.5_AUTO_ENRICHMENT.md)** - Auto-enrichment system (GPT-powered POI generation)
 - **[IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md)** - Full roadmap and architecture
 - **[CLAUDE.md](CLAUDE.md)** - Project overview and technical principles
 - **[Walking_tour_outline.md](Walking_tour_outline.md)** - Original vision and architectural blueprints
@@ -101,7 +102,14 @@ This creates:
 - Step 2.2: POI scoring based on user preferences ✅
 - Deliverable: Personalized route generation with 6 user profiles
 
-### 📋 Phase 3: RAG & Embeddings
+### ✅ Phase 2.5: Auto-Enrichment (Complete)
+- Auto-generate POI facts with GPT-4o ✅
+- Extract visual navigation cues ✅
+- Classify vibe tags automatically ✅
+- Fact verification and quality control ✅
+- Deliverable: Scalable POI enrichment (~$0.015/POI, 30 sec/POI)
+
+### 📋 Phase 3: RAG & Embeddings (Next)
 - Step 3.1: Create embeddings for semantic search
 - Step 3.2: Replace keyword matching with vector similarity
 - Step 3.3: Context-aware narrative generation
