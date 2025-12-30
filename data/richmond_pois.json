@@ -9,8 +9,8 @@
     "collected_at": "2025-11-13T11:59:14.628189",
     "total_pois": 15,
     "note": "Sample data created for learning project",
-    "enriched_pois": 10,
-    "enrichment_note": "Top 10 POIs enriched with facts, visual cues, and vibe tags"
+    "enriched_pois": 15,
+    "enrichment_note": "All 15 POIs enriched with facts, visual cues, and vibe tags"
   },
   "pois": [
     {
@@ -386,31 +386,31 @@
         "historic": "building"
       },
       "metadata": {
-        "description": "19th-century brewery building, now converted",
+        "description": "19th-century brewery building, now converted to residential and commercial use",
         "wikipedia": null,
         "website": null
       },
       "visual_cues": [
-        "Tall octagonal stone tower",
-        "Gothic-style pointed arch windows",
-        "Crenellated top like a castle",
-        "Standing alone on a hillside",
-        "Visible from town on clear days"
+        "Tall stone industrial building with multiple floors",
+        "Large arched windows typical of Victorian breweries",
+        "Converted warehouse aesthetic with modern additions",
+        "Located near the marketplace on a sloping street",
+        "Distinctive chimney or ventilation tower"
       ],
       "facts": [
-        "Culloden Tower was built in 1746 by John Yorke as a folly to commemorate the Duke of Cumberland's victory at the Battle of Culloden, which ended the Jacobite Rising.",
-        "The tower stands 80 feet tall and was designed as a banqueting house where Yorke could entertain guests while enjoying views over his estate and the River Swale.",
-        "It's an early example of Gothic Revival architecture. The building was abandoned for many years but has recently been restored and is occasionally open to the public."
+        "Richmond had several breweries in the 18th and 19th centuries, serving the town's many coaching inns and the nearby Catterick military garrison. At its peak, the town had at least three active breweries.",
+        "The brewing industry in Richmond declined in the early 20th century as national breweries consolidated and railways made it cheaper to transport beer from larger operations elsewhere.",
+        "Many of Richmond's former brewery buildings have been converted to other uses, preserving their distinctive industrial architecture with high ceilings and large windows designed for ventilation."
       ],
-      "source_reliability": 0.9,
+      "source_reliability": 0.8,
       "poi_type": "building",
       "vibe_tags": [
-        "architecture",
         "history",
-        "folly",
-        "scenic",
-        "political",
-        "eccentric"
+        "industrial",
+        "victorian",
+        "local",
+        "commerce",
+        "architecture"
       ]
     },
     {
@@ -427,14 +427,32 @@
         "leisure": "garden"
       },
       "metadata": {
-        "description": "Award-winning terraced garden near castle",
+        "description": "Award-winning terraced garden near castle with stunning views",
         "wikipedia": null,
-        "website": null
+        "website": "https://www.millgatehouse.com"
       },
-      "visual_cues": [],
-      "facts": [],
-      "source_reliability": 0.9,
-      "poi_type": "garden"
+      "visual_cues": [
+        "Georgian townhouse with walled garden entrance",
+        "Terraced gardens stepping down the hillside",
+        "Views of the castle and River Swale below",
+        "Abundant roses and climbing plants on stone walls",
+        "Narrow gate on Millgate street"
+      ],
+      "facts": [
+        "Millgate House Gardens has won multiple awards including the prestigious Good Gardens Guide 'Garden of the Year'. The garden tumbles down a steep hillside with views of Richmond Castle and the River Swale.",
+        "The garden was created over decades by owners Austin Lynch and Tim Culkin, who transformed a neglected slope into one of England's most celebrated small gardens, featured in numerous gardening publications.",
+        "The terraced design uses the challenging steep site to create intimate garden 'rooms', each with a different character—from formal rose gardens to wild woodland plantings clinging to the cliff edge."
+      ],
+      "source_reliability": 0.85,
+      "poi_type": "garden",
+      "vibe_tags": [
+        "nature",
+        "scenic",
+        "romantic",
+        "peaceful",
+        "hidden_gem",
+        "picturesque"
+      ]
     },
     {
       "id": "richmond_012",
@@ -449,14 +467,32 @@
         "historic": "church"
       },
       "metadata": {
-        "description": "Former Holy Trinity Church, now community venue",
+        "description": "Former Holy Trinity Church, now community venue and cultural space",
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
-      "source_reliability": 0.9,
-      "poi_type": "church"
+      "visual_cues": [
+        "Georgian church building with classical portico",
+        "Tall arched windows along the sides",
+        "Small square with benches in front",
+        "Stone steps leading to columned entrance",
+        "Clock tower or bell cupola on roof"
+      ],
+      "facts": [
+        "Holy Trinity Church was built in 1837 during the Georgian era to serve Richmond's growing population. The elegant classical design reflects the architectural tastes of the period.",
+        "The church was declared redundant in 1971 and later converted into a community space. It now hosts concerts, exhibitions, and cultural events, giving the historic building new life.",
+        "Trinity Church Square, the small plaza in front, provides one of Richmond's quieter public spaces—a pleasant contrast to the busier Market Place just a short walk away."
+      ],
+      "source_reliability": 0.85,
+      "poi_type": "church",
+      "vibe_tags": [
+        "architecture",
+        "georgian",
+        "culture",
+        "community",
+        "peaceful",
+        "historic"
+      ]
     },
     {
       "id": "richmond_013",
@@ -472,14 +508,33 @@
         "tourism": "viewpoint"
       },
       "metadata": {
-        "description": "18th-century folly built to commemorate Battle of Culloden",
-        "wikipedia": null,
+        "description": "18th-century Gothic folly built to commemorate Battle of Culloden",
+        "wikipedia": "en:Culloden_Tower",
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Tall octagonal stone tower standing alone on a hillside",
+        "Gothic-style pointed arch windows",
+        "Crenellated top like a miniature castle",
+        "Honey-colored stone exterior",
+        "Visible from town across the valley"
+      ],
+      "facts": [
+        "Culloden Tower was built in 1746 by John Yorke to commemorate the Duke of Cumberland's victory at the Battle of Culloden, which ended the Jacobite Rising and Bonnie Prince Charlie's claim to the throne.",
+        "The tower stands about 60 feet tall and was designed as a banqueting house where Yorke could entertain guests while enjoying panoramic views over his estate and the River Swale valley.",
+        "It's an early example of Gothic Revival architecture, built decades before the style became fashionable. The Landmark Trust restored the building, and it can now be rented as a holiday cottage."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "tower"
+      "poi_type": "tower",
+      "vibe_tags": [
+        "architecture",
+        "history",
+        "folly",
+        "scenic",
+        "political",
+        "eccentric",
+        "georgian"
+      ]
     },
     {
       "id": "richmond_014",
@@ -494,14 +549,32 @@
         "historic": "gate"
       },
       "metadata": {
-        "description": "Medieval archway and former toll gate",
+        "description": "Medieval archway and former toll gate marking the old town boundary",
         "wikipedia": null,
         "website": null
       },
-      "visual_cues": [],
-      "facts": [],
-      "source_reliability": 0.9,
-      "poi_type": "gate"
+      "visual_cues": [
+        "Stone archway spanning the narrow street",
+        "Building constructed above the arch",
+        "Narrow passage for pedestrians and vehicles",
+        "Worn stone at the base from centuries of use",
+        "Street slopes steeply on either side"
+      ],
+      "facts": [
+        "The Bar is one of Richmond's oldest surviving structures, dating back to the medieval period. It marked the boundary of the town and controlled access to the marketplace.",
+        "Originally a toll gate, merchants and traders would have paid fees here to bring goods into Richmond's market. The building above the arch was likely used by the toll collector.",
+        "The narrow archway gives a sense of the compact, fortified nature of medieval Richmond, where thick walls and controlled entry points provided security for the town's valuable market trade."
+      ],
+      "source_reliability": 0.85,
+      "poi_type": "gate",
+      "vibe_tags": [
+        "medieval",
+        "history",
+        "architecture",
+        "commerce",
+        "defensive",
+        "hidden_gem"
+      ]
     },
     {
       "id": "richmond_015",
@@ -517,14 +590,33 @@
         "tourism": "museum"
       },
       "metadata": {
-        "description": "Former railway station, now cinema and heritage center",
+        "description": "Beautifully restored Victorian railway station, now cinema, cafe, and heritage center",
         "wikipedia": null,
-        "website": null
+        "website": "https://www.thestation.co.uk"
       },
-      "visual_cues": [],
-      "facts": [],
+      "visual_cues": [
+        "Long Victorian stone building with decorative canopy",
+        "Original platform with heritage railway carriages",
+        "Ornate ironwork and period lamp posts",
+        "Arched windows and station clock",
+        "Café tables on the former platform"
+      ],
+      "facts": [
+        "Richmond Station opened in 1846 as the terminus of the branch line from Darlington. It served the town for over 120 years before closing in 1969 during the Beeching cuts that decimated Britain's rural railways.",
+        "The station sat derelict for decades before a major restoration project transformed it into a cultural hub. It now houses a two-screen cinema, artisan food hall, bakery, and ice cream shop.",
+        "The restoration preserved many original features including the platform, canopy, and Victorian architectural details. Heritage railway carriages on the platform add to the authentic atmosphere and house additional shops."
+      ],
       "source_reliability": 0.9,
-      "poi_type": "station"
+      "poi_type": "station",
+      "vibe_tags": [
+        "history",
+        "victorian",
+        "architecture",
+        "culture",
+        "food",
+        "transport",
+        "restoration"
+      ]
     }
   ],
   "categories": {
